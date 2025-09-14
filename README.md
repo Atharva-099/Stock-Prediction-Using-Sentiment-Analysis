@@ -1,5 +1,3 @@
-# 📈 S&P 500 Stock Prediction
-
 This repository contains experiments with stock price forecasting using **ARIMA** and **ARMA** time series models.
 
 ---
@@ -8,7 +6,8 @@ This repository contains experiments with stock price forecasting using **ARIMA*
 arima.ipynb # Notebook that uses ARIMA models (with differencing)
 arma.ipynb # Notebook that uses ARMA models (without differencing)
 arima.py # Helper functions for ARIMA (stationarity check, walk-forward validation, etc.)
-(#Ignore LSTM func)
+sentiment_utils.py for Finbert sentiment analysis
+
 requirements.txt # Python dependencies
 
 python -m venv .venv
@@ -19,8 +18,7 @@ pip install -r requirements.txt
 
 
 How It Works
-ARIMA (arima.ipynb)
-
+#ARIMA (arima.ipynb):
 Uses ARIMA (p, d, q) models.
 
 Data is differenced (d > 0) to enforce stationarity.
@@ -29,7 +27,7 @@ Fits one model on the training data and forecasts into the future.
 
 Limitation: Can appear as a flat line if over-differenced or not updated over time.
 
-ARMA (arma.ipynb)
+#ARMA (arma.ipynb):
 
 Uses ARMA (p, q) models (d = 0).
 
@@ -42,6 +40,8 @@ Retrains the model step by step as new data becomes available.
 Predictions adapt better to recent market changes.
 
 Produces more accurate-looking forecasts for short-term horizons.
+
+Displays the dataset prediction two times, once using sentiment analysis and one without sentiment analysis.
 
 Key Difference
 
