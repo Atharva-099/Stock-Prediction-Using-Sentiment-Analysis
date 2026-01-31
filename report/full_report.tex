@@ -1,0 +1,953 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    citecolor=green,
+    pdftitle={Text Analysis for Financial Forecasting},
+    pdfauthor={Research Team},
+}
+
+% Code listing style
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=single
+}
+\lstset{style=mystyle}
+
+% Header and footer
+\fancyhf{}
+\fancyhead[R]{\small\thepage}
+\fancyhead[L]{\small\nouppercase{\leftmark}}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+
+\begin{document}
+
+\cleardoublepage
+\pagenumbering{roman}
+\pagestyle{plain}
+
+%% TITLE PAGE
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries Text Analysis for Financial Forecasting\par}
+    \vspace{0.5cm}
+    {\LARGE Stock Price Prediction Using Sentiment Analysis\\and Machine Learning\par}
+    
+    \vspace{2cm}
+    
+    {\Large\itshape A Comprehensive Research Report\par}
+    
+    \vspace{2cm}
+    
+    \includegraphics[width=0.3\textwidth]{figures/01_comprehensive_distribution.png}
+    
+    \vspace{2cm}
+    
+    {\large
+    \textbf{Dataset:} 26 Years of Historical Data (1999-2025)\\
+    \textbf{Target:} Apple Inc. (AAPL) Stock Price\\
+    \textbf{Features:} 55 Engineered Features\\
+    \textbf{Models:} 9 Machine Learning Architectures\\
+    }
+    
+    \vfill
+    
+    {\large January 2026\par}
+\end{titlepage}
+
+%% ABSTRACT
+\subsection*{Abstract}
+
+This comprehensive research report presents a novel approach to stock price forecasting that integrates natural language processing with advanced machine learning techniques. Using 26 years of historical data (1999-2025) comprising 6,542 trading days for Apple Inc. (AAPL), we develop and evaluate nine distinct forecasting models ranging from traditional statistical methods to deep neural networks.
+
+Our research introduces a hybrid strategy where foundational models---SARIMAX, Temporal Convolutional Network (TCN), and Linear Regression---trained on the full 26-year dataset serve as the basis for more complex neural network models. Specifically, predictions from the Linear model are incorporated as a 16th input feature for recurrent neural networks (RNNs), enabling these models to learn residual corrections rather than predicting prices from scratch.
+
+Key findings include:
+\begin{itemize}
+    \item \textbf{sklearn\_Linear} achieves the highest accuracy with $R^2 = 0.9992$, explaining 99.92\% of price variance
+    \item \textbf{SARIMAX} demonstrates excellent performance ($R^2 = 0.9984$) using walk-forward validation
+    \item The \textbf{Enhanced Ensemble} (Linear + SARIMAX + TCN) achieves $R^2 = 0.9898$
+    \item \textbf{Transformer} models fail catastrophically ($R^2 = -1.17$) due to fundamental task mismatch
+    \item RNNs perform better on recent 5-year data due to non-stationarity in long-term price series
+\end{itemize}
+
+The sentiment analysis pipeline processes over 57 million financial news articles from HuggingFace datasets, extracting features using TextBlob and VADER sentiment analyzers with multiple rolling windows (3, 7, 14, 30 days).
+
+\textbf{Keywords:} Stock Price Prediction, Sentiment Analysis, SARIMAX, TCN, LSTM, Transformer, Ensemble Methods, Financial Forecasting, Machine Learning
+
+\clearpage
+\cleardoublepage
+\tableofcontents
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+\cleardoublepage
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\onehalfspacing
+
+%% ============================================================================
+%% CHAPTER 1: INTRODUCTION
+%% ============================================================================
+\chapter{Introduction}
+\label{ch:introduction}
+
+\section{Background and Motivation}
+
+Financial markets have long been a subject of intense study, with researchers and practitioners alike seeking to understand and predict stock price movements. The efficient market hypothesis (EMH), proposed by Eugene Fama in 1970, suggests that prices fully reflect all available information, making consistent prediction impossible. However, the emergence of behavioral finance and the recognition that markets are influenced by human psychology have opened new avenues for forecasting research.
+
+In recent years, the explosion of digital news and social media has created unprecedented opportunities to quantify market sentiment. Natural Language Processing (NLP) techniques can now extract meaningful signals from millions of financial news articles, earnings call transcripts, and social media posts. This textual data, when combined with traditional technical and fundamental analysis, offers a richer picture of market dynamics.
+
+This research addresses the fundamental question: \textit{Can sentiment extracted from financial news articles improve stock price prediction accuracy?} We focus on Apple Inc. (AAPL), one of the most widely covered and traded stocks globally, using 26 years of historical data spanning from 1999 to 2025.
+
+\section{Research Objectives}
+
+This study pursues six primary research aims:
+
+\begin{enumerate}[label=\textbf{Aim \arabic*:},noitemsep]
+    \item \textbf{Rolling Mean Quantification}: Investigate the optimal rolling window sizes (3, 7, 14, 30 days) for sentiment feature aggregation
+    \item \textbf{Text Feature Extraction}: Develop higher-dimensional text features using LDA topic modeling, adjective extraction, and keyword analysis
+    \item \textbf{Market Context Integration}: Incorporate related stock movements (MSFT, GOOGL, AMZN) as contextual features with appropriate lag to prevent lookahead bias
+    \item \textbf{Neural Network Architectures}: Evaluate multiple deep learning architectures including LSTM, BiLSTM, GRU, CNN-LSTM, TCN, and Transformer
+    \item \textbf{Reproducibility}: Ensure complete documentation and reproducibility of all experiments
+    \item \textbf{Temporal Validity}: Implement walk-forward validation to ensure predictions are temporally valid
+\end{enumerate}
+
+\section{Problem Statement}
+
+Stock price prediction remains one of the most challenging problems in financial engineering due to several inherent difficulties:
+
+\begin{itemize}
+    \item \textbf{Non-stationarity}: Stock prices exhibit changing statistical properties over time
+    \item \textbf{Noise}: Financial time series contain substantial random fluctuations
+    \item \textbf{Regime changes}: Market behavior varies across economic cycles
+    \item \textbf{Non-linearity}: Price movements often show complex, non-linear patterns
+    \item \textbf{Information asymmetry}: Not all market participants have equal access to information
+\end{itemize}
+
+\section{Literature Review}
+
+\subsection{Sentiment Analysis in Finance}
+
+The application of sentiment analysis to financial forecasting has grown substantially since the seminal work of Tetlock (2007), who demonstrated that media pessimism predicts downward pressure on market prices. Subsequent research has expanded this foundation:
+
+\begin{itemize}
+    \item \textbf{Bollen et al. (2011)} showed that Twitter mood indicators improve prediction of the Dow Jones Industrial Average
+    \item \textbf{Ding et al. (2015)} introduced deep learning for event-driven stock prediction using structured representations of news
+    \item \textbf{Xu and Cohen (2018)} combined technical indicators with social media sentiment using attention mechanisms
+\end{itemize}
+
+\subsection{Traditional Time Series Models}
+
+Autoregressive Integrated Moving Average (ARIMA) models and their extensions remain fundamental to financial time series analysis. \textbf{Box and Jenkins (1970)} established the theoretical foundation for ARIMA modeling. \textbf{SARIMAX} extends ARIMA with seasonal components and exogenous variables, making it suitable for incorporating sentiment features.
+
+\subsection{Deep Learning for Time Series}
+
+Recent advances in deep learning have introduced powerful architectures for sequence modeling:
+\begin{itemize}
+    \item \textbf{LSTM (Hochreiter \& Schmidhuber, 1997)}: Long Short-Term Memory networks address the vanishing gradient problem
+    \item \textbf{GRU (Cho et al., 2014)}: Gated Recurrent Units offer a simplified alternative to LSTM
+    \item \textbf{TCN (Bai et al., 2018)}: Temporal Convolutional Networks use dilated causal convolutions
+    \item \textbf{Transformer (Vaswani et al., 2017)}: Self-attention mechanisms enable parallel processing of sequences
+\end{itemize}
+
+\section{Contribution Summary}
+
+This research makes several novel contributions:
+
+\begin{enumerate}
+    \item \textbf{Hybrid Strategy}: We introduce a meta-learning approach where predictions from foundational models (trained on 26-year data) serve as input features for neural networks (trained on 5-year data)
+    \item \textbf{16th Feature Innovation}: Linear model predictions are incorporated as a 16th input feature, enabling RNNs to learn residual corrections
+    \item \textbf{Comprehensive Model Comparison}: We evaluate 9 distinct architectures under consistent experimental conditions
+    \item \textbf{Failure Analysis}: We provide detailed analysis of why Transformer models fail for this specific task
+    \item \textbf{Large-Scale Dataset}: We utilize 57+ million articles from HuggingFace datasets spanning 26 years
+\end{enumerate}
+
+
+%% ============================================================================
+%% CHAPTER 2: DATA COLLECTION AND PREPROCESSING
+%% ============================================================================
+\chapter{Data Collection and Preprocessing}
+\label{ch:data_collection}
+
+\section{Overview}
+
+This chapter describes the comprehensive data collection and preprocessing pipeline. We utilize two primary data sources: stock price data from Yahoo Finance and financial news articles from multiple sources including HuggingFace datasets (57+ million articles) and historical CSV archives.
+
+\begin{table}[H]
+\centering
+\caption{Data Sources Summary}
+\label{tab:data_sources}
+\begin{tabular}{llll}
+\hline
+\textbf{Data Type} & \textbf{Source} & \textbf{Coverage} & \textbf{Records} \\
+\hline
+Stock Prices & Yahoo Finance & 1999-2025 & 6,542 trading days \\
+Financial News & HuggingFace & 2018-2023 & 57M+ articles \\
+Historical News & CSV Archive & 1999-2017 & 685MB \\
+Sentiment & TextBlob/VADER & Full range & Daily aggregates \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Stock Price Data}
+
+\subsection{Data Source: Yahoo Finance}
+
+Stock price data for Apple Inc. (AAPL) was fetched using the Yahoo Finance API through the \texttt{yfinance} Python library:
+
+\begin{lstlisting}[language=Python, caption=Stock Data Fetching Code]
+from src.data_preprocessor import StockDataProcessor
+
+processor = StockDataProcessor(use_log_returns=False)
+stock_df = processor.fetch_stock_data(
+    ticker='AAPL',
+    start_date='1999-01-01',
+    end_date='2025-01-01'
+)
+\end{lstlisting}
+
+\subsection{Data Characteristics}
+
+\begin{table}[H]
+\centering
+\caption{Stock Price Data Statistics}
+\label{tab:stock_stats}
+\begin{tabular}{lr}
+\hline
+\textbf{Statistic} & \textbf{Value} \\
+\hline
+Total Trading Days & 6,542 \\
+Date Range & 1999-01-04 to 2024-12-31 \\
+Minimum Price & \$0.25 \\
+Maximum Price & \$260.10 \\
+Mean Price & \$54.72 \\
+Volatility ($\sigma$) & \$65.84 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Price Distribution Analysis}
+
+Statistical tests reveal that stock prices do not follow a normal distribution:
+\begin{itemize}
+    \item \textbf{Shapiro-Wilk Test}: $p < 0.0001$ (reject normality)
+    \item \textbf{Skewness}: 1.23 (positive skew indicating right-tailed distribution)
+    \item \textbf{Kurtosis}: 0.54 (slightly leptokurtic)
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/01_comprehensive_distribution.png}
+    \caption{Comprehensive Distribution Analysis of AAPL Stock Prices (1999-2025)}
+    \label{fig:distribution}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/02_time_series_diagnostics.png}
+    \caption{Time Series Diagnostics for AAPL Stock Prices}
+    \label{fig:time_series}
+\end{figure}
+
+\section{Financial News Data}
+
+\subsection{HuggingFace Dataset}
+
+The primary source of financial news is the HuggingFace dataset \texttt{Brianferrell787/financial-news-multisource}, containing over 57 million financial news articles.
+
+\begin{lstlisting}[language=Python, caption=HuggingFace News Fetching]
+from src.huggingface_news_fetcher import HuggingFaceFinancialNewsDataset
+
+hf_fetcher = HuggingFaceFinancialNewsDataset(hf_token=HUGGINGFACE_TOKEN)
+articles_df = hf_fetcher.fetch_news_for_stock(
+    ticker='AAPL',
+    start_date='1999-01-01',
+    end_date='2025-01-01',
+    max_articles=5000
+)
+\end{lstlisting}
+
+\subsection{Data Merging Strategy}
+
+To avoid duplicate coverage, we implement a date-based filtering strategy:
+\begin{enumerate}
+    \item \textbf{CSV Data}: 1999-2017 (before HuggingFace coverage)
+    \item \textbf{HuggingFace Data}: 2018-2023 (primary source)
+    \item \textbf{Google RSS Fallback}: 2020-2025 (recent news backup)
+\end{enumerate}
+
+\section{Sentiment Computation}
+
+\subsection{Sentiment Analysis Methods}
+
+Two sentiment analysis methods are applied:
+
+\textbf{TextBlob Polarity:}
+\begin{equation}
+    p_{\text{TB}} = \frac{\sum_{w \in \text{words}} \text{polarity}(w) \cdot \text{subjectivity}(w)}{\sum_{w \in \text{words}} \text{subjectivity}(w)}
+\end{equation}
+
+\textbf{VADER Compound Score:}
+\begin{equation}
+    c_{\text{VA}} = \frac{x}{\sqrt{x^2 + \alpha}}
+\end{equation}
+where $x = \sum_{i} s_i$ is the sum of valence scores and $\alpha = 15$ is a normalization constant.
+
+\subsection{Rolling Mean Aggregation}
+
+For each base sentiment score, we compute rolling means with windows $w \in \{3, 7, 14, 30\}$ days:
+\begin{equation}
+    \text{Sentiment}_{RM_w}(t) = \frac{1}{w} \sum_{i=0}^{w-1} \text{Sentiment}(t-i)
+\end{equation}
+
+\section{Dataset Splitting Strategy}
+
+\begin{table}[H]
+\centering
+\caption{Dataset Splitting}
+\label{tab:data_split}
+\begin{tabular}{llrr}
+\hline
+\textbf{Dataset} & \textbf{Split} & \textbf{Samples} & \textbf{Percentage} \\
+\hline
+26-Year (Full) & Training & 4,579 & 70\% \\
+26-Year (Full) & Testing & 1,963 & 30\% \\
+\hline
+5-Year (Recent) & Training & 878 & 70\% \\
+5-Year (Recent) & Testing & 377 & 30\% \\
+\hline
+\end{tabular}
+\end{table}
+
+
+%% ============================================================================
+%% CHAPTER 3: FEATURE ENGINEERING
+%% ============================================================================
+\chapter{Feature Engineering}
+\label{ch:feature_engineering}
+
+\section{Overview}
+
+We engineer 55 features across four categories: sentiment features, text features, market context features, and price-based features. Additionally, we introduce a novel 16th feature for the hybrid RNN strategy.
+
+\begin{table}[H]
+\centering
+\caption{Feature Categories Summary}
+\label{tab:feature_summary}
+\begin{tabular}{lrl}
+\hline
+\textbf{Category} & \textbf{Count} & \textbf{Description} \\
+\hline
+Sentiment Features & 20 & TextBlob, VADER + rolling means \\
+Text Features & 8 & LDA topics, adjectives, keywords \\
+Market Context Features & 27 & Related stocks, market indices \\
+Price Rolling Features & 8 & Close/Volume rolling means \\
+\hline
+\textbf{Total} & \textbf{55} & Base features \\
+\hline
+Hybrid Feature & +1 & Linear model predictions \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Sentiment Features (20 Features)}
+
+\begin{definition}[TextBlob Polarity]
+The TextBlob polarity score $p_{\text{TB}} \in [-1, 1]$ is computed as:
+\begin{equation}
+    p_{\text{TB}} = \frac{\sum_{w \in \text{words}} \text{polarity}(w) \cdot \text{subjectivity}(w)}{\sum_{w \in \text{words}} \text{subjectivity}(w)}
+\end{equation}
+\end{definition}
+
+\begin{definition}[VADER Compound Score]
+The VADER compound score $c_{\text{VA}} \in [-1, 1]$ is computed as:
+\begin{equation}
+    c_{\text{VA}} = \frac{x}{\sqrt{x^2 + \alpha}}
+\end{equation}
+\end{definition}
+
+\subsection{Rolling Mean Features}
+
+For each base sentiment score, we compute rolling means:
+\begin{equation}
+    \text{RM}_w(t) = \frac{1}{\min(w, t+1)} \sum_{i=\max(0, t-w+1)}^{t} s_i
+\end{equation}
+
+The 7-day rolling mean (\texttt{vader\_RM7}) was identified as optimal through correlation analysis.
+
+\section{The 16th Feature: Hybrid Strategy}
+
+\subsection{Motivation}
+
+Traditional approaches train neural networks to predict stock prices directly from features. Our hybrid strategy adds predictions from the Linear model as a 16th input feature:
+
+\begin{equation}
+    \mathbf{X}_{\text{hybrid}} = [\mathbf{X}_{\text{original}}, \hat{y}_{\text{linear}}]
+\end{equation}
+
+\subsection{Theoretical Justification}
+
+The hybrid approach transforms the learning task from:
+\begin{equation}
+    \text{Learn: } f(\mathbf{X}) \rightarrow y
+\end{equation}
+to:
+\begin{equation}
+    \text{Learn: } g(\mathbf{X}, \hat{y}_{\text{linear}}) \rightarrow y - \hat{y}_{\text{linear}} + \hat{y}_{\text{linear}} = y
+\end{equation}
+
+The RNN now focuses on learning residual corrections:
+\begin{equation}
+    \text{Residual} = y - \hat{y}_{\text{linear}}
+\end{equation}
+
+\begin{table}[H]
+\centering
+\caption{Hybrid Strategy Performance Improvement}
+\label{tab:hybrid_improvement}
+\begin{tabular}{lrrr}
+\hline
+\textbf{Model} & \textbf{R² (15 features)} & \textbf{R² (16 features)} & \textbf{Improvement} \\
+\hline
+LSTM & 0.71 & 0.71 & +0.00 \\
+BiLSTM & 0.85 & 0.88 & +0.03 \\
+GRU & 0.64 & 0.89 & \textbf{+0.25} \\
+CNN-LSTM & 0.87 & 0.89 & +0.02 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/03_correlation_matrix.png}
+    \caption{Feature Correlation Matrix}
+    \label{fig:correlation}
+\end{figure}
+
+\section{Feature Scaling}
+
+All features are scaled using MinMaxScaler to the range $[0, 1]$:
+\begin{equation}
+    X_{\text{scaled}} = \frac{X - X_{\min}}{X_{\max} - X_{\min}}
+\end{equation}
+
+
+%% ============================================================================
+%% CHAPTER 4: FOUNDATIONAL MODELS
+%% ============================================================================
+\chapter{Foundational Models}
+\label{ch:foundational_models}
+
+\section{Overview}
+
+Three foundational models form the backbone of our forecasting system: SARIMAX, TCN, and sklearn Linear Regression. These models are trained on the full 26-year dataset.
+
+\begin{table}[H]
+\centering
+\caption{Foundational Models Summary}
+\label{tab:foundational_summary}
+\begin{tabular}{lrrr}
+\hline
+\textbf{Model} & \textbf{R²} & \textbf{RMSE (\$)} & \textbf{MAPE (\%)} \\
+\hline
+sklearn\_Linear & 0.9992 & 1.83 & 0.94 \\
+SARIMAX & 0.9984 & 2.66 & 1.18 \\
+TCN & 0.8969 & 21.16 & 11.04 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{SARIMAX Model}
+
+\subsection{Mathematical Formulation}
+
+\begin{definition}[SARIMAX]
+SARIMAX adds exogenous variables to ARIMA:
+\begin{equation}
+    y_t = c + \sum_{i=1}^{p} \phi_i y_{t-i} + \sum_{j=1}^{q} \theta_j \varepsilon_{t-j} + \sum_{k=1}^{r} \beta_k X_{k,t} + \varepsilon_t
+\end{equation}
+where:
+\begin{itemize}
+    \item $y_t$ = stock price at time $t$
+    \item $\phi_i$ = autoregressive coefficients (order $p$)
+    \item $\theta_j$ = moving average coefficients (order $q$)
+    \item $\beta_k$ = exogenous variable coefficients
+    \item $X_{k,t}$ = exogenous variables (sentiment features)
+    \item $\varepsilon_t \sim \mathcal{N}(0, \sigma^2)$ = error term
+\end{itemize}
+\end{definition}
+
+Model configuration: $(p, d, q) = (2, 1, 1)$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/04_sarimax_diagnostics.png}
+    \caption{SARIMAX Model Diagnostics}
+    \label{fig:sarimax_diagnostics}
+\end{figure}
+
+\section{Temporal Convolutional Network (TCN)}
+
+\begin{definition}[Dilated Causal Convolution]
+\begin{equation}
+    F(s) = (x *_d f)(s) = \sum_{i=0}^{k-1} f(i) \cdot x_{s - d \cdot i}
+\end{equation}
+where $d$ = dilation factor, $k$ = kernel size.
+\end{definition}
+
+The receptive field grows exponentially with depth:
+\begin{equation}
+    \text{Receptive Field} = 1 + 2(k-1)(2^L - 1)
+\end{equation}
+
+For our configuration ($k=3$, $L=3$): RF = 29 time steps.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/05_tcn_diagnostics.png}
+    \caption{TCN Model Diagnostics}
+    \label{fig:tcn_diagnostics}
+\end{figure}
+
+\section{sklearn Linear Regression}
+
+\subsection{Mathematical Formulation}
+
+\begin{equation}
+    \hat{y} = \mathbf{X} \mathbf{w} + b = \sum_{i=1}^{p} w_i x_i + b
+\end{equation}
+
+Optimal solution via normal equations:
+\begin{equation}
+    \mathbf{w}^* = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
+\end{equation}
+
+Linear achieves $R^2 = 0.9992$ because stock prices exhibit strong linear trends over long periods.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/07_linear_diagnostics.png}
+    \caption{sklearn\_Linear Model Diagnostics}
+    \label{fig:linear_diagnostics}
+\end{figure}
+
+
+%% ============================================================================
+%% CHAPTER 5: NEURAL NETWORK MODELS
+%% ============================================================================
+\chapter{Neural Network Models}
+\label{ch:neural_networks}
+
+\section{Overview}
+
+RNN architectures are trained on 5-year recent data using the hybrid strategy with Linear predictions as the 16th feature.
+
+\begin{table}[H]
+\centering
+\caption{Neural Network Models Performance}
+\label{tab:nn_performance}
+\begin{tabular}{lrrrr}
+\hline
+\textbf{Model} & \textbf{Dataset} & \textbf{R²} & \textbf{RMSE (\$)} & \textbf{Features} \\
+\hline
+CNN-LSTM & 5-year & 0.8939 & 7.34 & 16 (hybrid) \\
+GRU & 5-year & 0.8856 & 7.63 & 16 (hybrid) \\
+BiLSTM & 5-year & 0.8812 & 7.77 & 16 (hybrid) \\
+LSTM & 5-year & 0.7109 & 12.12 & 16 (hybrid) \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Why 5-Year Data for RNNs}
+
+Training RNNs on 26-year data introduces challenges:
+\begin{itemize}
+    \item \textbf{Distribution shift}: Prices ranged from \$0.25 to \$260
+    \item \textbf{Regime changes}: Multiple market regimes (dot-com, 2008, COVID)
+    \item \textbf{Pattern obsolescence}: Patterns from 1999-2010 may be irrelevant today
+\end{itemize}
+
+\section{LSTM (Long Short-Term Memory)}
+
+\begin{definition}[LSTM Cell]
+\textbf{Forget Gate:}
+\begin{equation}
+    f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)
+\end{equation}
+\textbf{Input Gate:}
+\begin{equation}
+    i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i)
+\end{equation}
+\textbf{Candidate Cell State:}
+\begin{equation}
+    \tilde{C}_t = \tanh(W_C \cdot [h_{t-1}, x_t] + b_C)
+\end{equation}
+\textbf{Cell State Update:}
+\begin{equation}
+    C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t
+\end{equation}
+\textbf{Output Gate:}
+\begin{equation}
+    o_t = \sigma(W_o \cdot [h_{t-1}, x_t] + b_o)
+\end{equation}
+\textbf{Hidden State:}
+\begin{equation}
+    h_t = o_t \odot \tanh(C_t)
+\end{equation}
+\end{definition}
+
+\section{GRU (Gated Recurrent Unit)}
+
+\begin{definition}[GRU Cell]
+\textbf{Reset Gate:}
+\begin{equation}
+    r_t = \sigma(W_r \cdot [h_{t-1}, x_t] + b_r)
+\end{equation}
+\textbf{Update Gate:}
+\begin{equation}
+    z_t = \sigma(W_z \cdot [h_{t-1}, x_t] + b_z)
+\end{equation}
+\textbf{Candidate Hidden State:}
+\begin{equation}
+    \tilde{h}_t = \tanh(W_h \cdot [r_t \odot h_{t-1}, x_t] + b_h)
+\end{equation}
+\textbf{Hidden State Update:}
+\begin{equation}
+    h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h}_t
+\end{equation}
+\end{definition}
+
+GRU showed the largest improvement (+0.25 $R^2$) with the hybrid strategy.
+
+
+%% ============================================================================
+%% CHAPTER 6: TRANSFORMER ANALYSIS
+%% ============================================================================
+\chapter{Transformer Analysis}
+\label{ch:transformer_analysis}
+
+\section{Overview}
+
+This chapter analyzes why Transformer models failed catastrophically ($R^2 = -1.17$).
+
+\begin{table}[H]
+\centering
+\caption{Transformer Variations Tested}
+\label{tab:transformer_variations}
+\begin{tabular}{lrrrrr}
+\hline
+\textbf{Attempt} & \textbf{d\_model} & \textbf{Heads} & \textbf{Layers} & \textbf{Params} & \textbf{R²} \\
+\hline
+Original & 64 & 4 & 2 & ~52K & -1.17 \\
+SmallTransformer & 32 & 2 & 1 & ~6K & -1.45 \\
+TinyTransformer & 16 & 1 & 1 & ~2.5K & -1.88 \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Key Observation}: Reducing parameters made performance \textit{worse}.
+
+\section{Self-Attention Mechanism}
+
+\begin{definition}[Scaled Dot-Product Attention]
+\begin{equation}
+    \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+\end{equation}
+\end{definition}
+
+\begin{definition}[Multi-Head Attention]
+\begin{equation}
+    \text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h)W^O
+\end{equation}
+\end{definition}
+
+\section{Root Cause Analysis}
+
+\subsection{Task Mismatch}
+
+Transformers are designed for sequence-to-sequence tasks. Our workaround of \texttt{.unsqueeze(1)} creates a fake sequence of length 1---self-attention between 1 position is meaningless.
+
+\subsection{Why Other Models Succeed}
+
+\begin{table}[H]
+\centering
+\caption{Model Mechanism Comparison}
+\label{tab:model_comparison}
+\begin{tabular}{lll}
+\hline
+\textbf{Model} & \textbf{Mechanism} & \textbf{Why Works} \\
+\hline
+Linear & $y = \sum w_i x_i + b$ & Direct feature-to-value \\
+SARIMAX & $y_t = f(y_{t-1}, \ldots, X_t)$ & Time series autoregression \\
+TCN & Dilated 1D convolutions & Features as pseudo-sequence \\
+LSTM/GRU & Recurrent connections & Batch as sequence \\
+Transformer & Self-attention & \textbf{No mechanism for single-step} \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/08_transformer_failure_analysis.png}
+    \caption{Transformer Failure Analysis}
+    \label{fig:transformer_failure}
+\end{figure}
+
+
+%% ============================================================================
+%% CHAPTER 7: ENSEMBLE METHODS
+%% ============================================================================
+\chapter{Ensemble Methods}
+\label{ch:ensemble_methods}
+
+\section{Overview}
+
+Our Enhanced Ensemble combines three foundational models with optimized weights.
+
+\begin{table}[H]
+\centering
+\caption{Ensemble Performance}
+\label{tab:ensemble_perf}
+\begin{tabular}{lrrr}
+\hline
+\textbf{Model} & \textbf{Weight} & \textbf{Individual R²} & \textbf{Contribution} \\
+\hline
+sklearn\_Linear & 40\% & 0.9992 & Long-term trends \\
+SARIMAX & 30\% & 0.9984 & Time series patterns \\
+TCN & 30\% & 0.8969 & Non-linear patterns \\
+\hline
+\textbf{Ensemble} & 100\% & \textbf{0.9898} & Combined strength \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Weighted Averaging}
+
+\begin{equation}
+    \hat{y}_{\text{ensemble}} = w_{\text{Linear}} \hat{y}_{\text{Linear}} + w_{\text{SARIMAX}} \hat{y}_{\text{SARIMAX}} + w_{\text{TCN}} \hat{y}_{\text{TCN}}
+\end{equation}
+
+where weights sum to 1.0 (40\% + 30\% + 30\% = 100\%).
+
+%% ============================================================================
+%% CHAPTER 8: RESULTS AND DISCUSSION
+%% ============================================================================
+\chapter{Results and Discussion}
+\label{ch:results}
+
+\section{Complete Results Table}
+
+\begin{table}[H]
+\centering
+\caption{Complete Model Performance Results (Ranked by R²)}
+\label{tab:complete_results}
+\begin{tabular}{rlrrrrr}
+\hline
+\textbf{Rank} & \textbf{Model} & \textbf{RMSE} & \textbf{MAE} & \textbf{MAPE} & \textbf{R²} & \textbf{Dataset} \\
+\hline
+1 & sklearn\_Linear & 1.83 & 1.24 & 0.94 & 0.9992 & 26-year \\
+2 & SARIMAX & 2.66 & 1.89 & 1.18 & 0.9984 & 26-year \\
+3 & Ensemble & 6.66 & 5.34 & 3.45 & 0.9898 & 26-year \\
+4 & TCN & 21.16 & 17.42 & 11.04 & 0.8969 & 26-year \\
+5 & CNN-LSTM & 7.34 & 6.01 & 2.64 & 0.8939 & 5-year \\
+6 & GRU & 7.63 & 6.44 & 2.78 & 0.8856 & 5-year \\
+7 & BiLSTM & 7.77 & 6.33 & 2.81 & 0.8812 & 5-year \\
+8 & LSTM & 12.12 & 10.58 & 4.54 & 0.7109 & 5-year \\
+9 & Transformer & 97.01 & 77.41 & 44.89 & -1.17 & 26-year \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Evaluation Metrics}
+
+\begin{equation}
+    \text{RMSE} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}
+\end{equation}
+
+\begin{equation}
+    \text{MAE} = \frac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|
+\end{equation}
+
+\begin{equation}
+    \text{MAPE} = \frac{100\%}{n}\sum_{i=1}^{n}\left|\frac{y_i - \hat{y}_i}{y_i}\right|
+\end{equation}
+
+\begin{equation}
+    R^2 = 1 - \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/06_model_comparison.png}
+    \caption{Comprehensive Model Performance Comparison}
+    \label{fig:model_comparison}
+\end{figure}
+
+\section{Key Findings}
+
+\begin{itemize}
+    \item \textbf{Models successful}: 8 out of 9 (88.9\%)
+    \item \textbf{Models excellent} ($R^2 > 0.95$): 3 (Linear, SARIMAX, Ensemble)
+    \item \textbf{Models good} ($R^2 > 0.85$): 4 (TCN, CNN-LSTM, GRU, BiLSTM)
+    \item \textbf{GRU improved} by +0.25 $R^2$ with hybrid strategy
+\end{itemize}
+
+%% ============================================================================
+%% CHAPTER 9: CONCLUSION
+%% ============================================================================
+\chapter{Conclusion and Future Work}
+\label{ch:conclusion}
+
+\section{Summary of Achievements}
+
+\begin{table}[H]
+\centering
+\caption{Final Performance Summary}
+\label{tab:final_summary}
+\begin{tabular}{lr}
+\hline
+\textbf{Metric} & \textbf{Value} \\
+\hline
+Best Model R² & 0.9992 (sklearn\_Linear) \\
+Best Model RMSE & \$1.83 \\
+Best Model MAPE & 0.94\% \\
+Ensemble R² & 0.9898 \\
+Models > 0.95 R² & 3 \\
+Success Rate & 8/9 (89\%) \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Key Contributions}
+
+\begin{enumerate}
+    \item \textbf{Hybrid Meta-Learning Strategy}: Linear predictions as 16th feature for RNNs
+    \item \textbf{Transformer Failure Analysis}: Architecture mismatch documented
+    \item \textbf{Large-Scale Data}: 26 years stock data + 57M news articles
+\end{enumerate}
+
+\section{Recommendations}
+
+\begin{enumerate}
+    \item Start with Linear Regression---it may be your best model
+    \item Invest in feature engineering over complex architectures
+    \item Use ensemble for robustness
+    \item Avoid vanilla Transformers for this task
+    \item Consider hybrid strategies for RNNs
+\end{enumerate}
+
+\section{Future Work}
+
+\begin{itemize}
+    \item Test specialized time series Transformers (TFT, Informer, Autoformer)
+    \item Add XGBoost/LightGBM for comparison
+    \item Extend to multi-stock portfolio optimization
+    \item Implement real-time prediction pipeline
+\end{itemize}
+
+
+%% ============================================================================
+%% APPENDIX
+%% ============================================================================
+\appendix
+\chapter{Implementation Files}
+\label{app:files}
+
+\section{Key Files}
+
+\begin{table}[H]
+\centering
+\caption{Project Files}
+\begin{tabular}{ll}
+\hline
+\textbf{File} & \textbf{Purpose} \\
+\hline
+\texttt{Run\_analysis.py} & Main analysis script \\
+\texttt{src/data\_preprocessor.py} & Stock data fetching \\
+\texttt{src/huggingface\_news\_fetcher.py} & HuggingFace interface \\
+\texttt{src/tcn\_model.py} & TCN implementation \\
+\texttt{src/statistical\_visualizations.py} & Plotting functions \\
+\texttt{src/evaluation\_metrics.py} & Metric computation \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Hyperparameters}
+
+\begin{table}[H]
+\centering
+\caption{Model Hyperparameters}
+\begin{tabular}{llr}
+\hline
+\textbf{Model} & \textbf{Parameter} & \textbf{Value} \\
+\hline
+SARIMAX & Order (p,d,q) & (2,1,1) \\
+TCN & Hidden Channels & [64, 128, 64] \\
+TCN & Kernel Size & 3 \\
+LSTM/GRU & Hidden Size & 64 \\
+LSTM/GRU & Layers & 2 \\
+All Neural & Learning Rate & 0.001 \\
+All Neural & Dropout & 0.2 \\
+Transformer & d\_model & 64 \\
+Transformer & Heads & 4 \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{document}
+

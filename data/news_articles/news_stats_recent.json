@@ -1,0 +1,21 @@
+{
+  "total_articles": 53666,
+  "date_range": {
+    "start": "2020-01-01",
+    "end": "2025-12-26"
+  },
+  "unique_dates": 159,
+  "yearly_distribution": {
+    "2020": 53616,
+    "2025": 50
+  },
+  "source_distribution": {
+    "BayStreet": 58,
+    "Bloomberg": 25,
+    "CNBC Top Stories": 25,
+    "GuruFocus": 29601,
+    "Investor's Business Daily": 3739,
+    "TalkMarkets": 4811,
+    "Zacks": 15407
+  }
+}

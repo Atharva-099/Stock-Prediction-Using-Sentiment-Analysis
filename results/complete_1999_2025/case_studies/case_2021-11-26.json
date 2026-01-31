@@ -1,0 +1,249 @@
+{
+  "date": "2021-11-26",
+  "event": {
+    "name": "Trading Day"
+  },
+  "headlines": [
+    {
+      "text": "Baidu\u2019s Robotaxi Service Approved For Commercial Deployment in Beijing \u2013 Report",
+      "sentiment": 0.4215,
+      "words": [
+        {
+          "word": "baidu\u2019s",
+          "sentiment": 0.0
+        },
+        {
+          "word": "robotaxi",
+          "sentiment": 0.0
+        },
+        {
+          "word": "service",
+          "sentiment": 0.0
+        },
+        {
+          "word": "approved",
+          "sentiment": 0.4215
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "commercial",
+          "sentiment": 0.0
+        },
+        {
+          "word": "deployment",
+          "sentiment": 0.0
+        },
+        {
+          "word": "beijing",
+          "sentiment": 0.0
+        },
+        {
+          "word": "report",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Looking to Generate Passive Income? Consider These 3 Dividend Stocks",
+      "sentiment": 0.2023,
+      "words": [
+        {
+          "word": "looking",
+          "sentiment": 0.0
+        },
+        {
+          "word": "generate",
+          "sentiment": 0.0
+        },
+        {
+          "word": "passive",
+          "sentiment": 0.2023
+        },
+        {
+          "word": "income?",
+          "sentiment": 0.0
+        },
+        {
+          "word": "consider",
+          "sentiment": 0.0
+        },
+        {
+          "word": "these",
+          "sentiment": 0.0
+        },
+        {
+          "word": "dividend",
+          "sentiment": 0.0
+        },
+        {
+          "word": "stocks",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Despite shrinking by US$454m in the past week, Guidewire Software (NYSE:GWRE) shareholders are still up 116% over 5 years",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "despite",
+          "sentiment": 0.0
+        },
+        {
+          "word": "shrinking",
+          "sentiment": 0.0
+        },
+        {
+          "word": "us$454m",
+          "sentiment": 0.0
+        },
+        {
+          "word": "the",
+          "sentiment": 0.0
+        },
+        {
+          "word": "past",
+          "sentiment": 0.0
+        },
+        {
+          "word": "week,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "guidewire",
+          "sentiment": 0.0
+        },
+        {
+          "word": "software",
+          "sentiment": 0.0
+        },
+        {
+          "word": "(nyse:gwre)",
+          "sentiment": 0.0
+        },
+        {
+          "word": "shareholders",
+          "sentiment": 0.0
+        },
+        {
+          "word": "are",
+          "sentiment": 0.0
+        },
+        {
+          "word": "still",
+          "sentiment": 0.0
+        },
+        {
+          "word": "116%",
+          "sentiment": 0.0
+        },
+        {
+          "word": "over",
+          "sentiment": 0.0
+        },
+        {
+          "word": "years",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Does FedEx Stock\u2019s Fall Present Opportunity?",
+      "sentiment": 0.4215,
+      "words": [
+        {
+          "word": "does",
+          "sentiment": 0.0
+        },
+        {
+          "word": "fedex",
+          "sentiment": 0.0
+        },
+        {
+          "word": "stock\u2019s",
+          "sentiment": 0.0
+        },
+        {
+          "word": "fall",
+          "sentiment": 0.0
+        },
+        {
+          "word": "present",
+          "sentiment": 0.0
+        },
+        {
+          "word": "opportunity?",
+          "sentiment": 0.4215
+        }
+      ]
+    },
+    {
+      "text": "San Juan Basin Royalty Trust (SJT) Ex-Dividend Date Scheduled for November 29, 2021",
+      "sentiment": 0.5106,
+      "words": [
+        {
+          "word": "san",
+          "sentiment": 0.0
+        },
+        {
+          "word": "juan",
+          "sentiment": 0.0
+        },
+        {
+          "word": "basin",
+          "sentiment": 0.0
+        },
+        {
+          "word": "royalty",
+          "sentiment": 0.0
+        },
+        {
+          "word": "trust",
+          "sentiment": 0.5106
+        },
+        {
+          "word": "(sjt)",
+          "sentiment": 0.0
+        },
+        {
+          "word": "ex-dividend",
+          "sentiment": 0.0
+        },
+        {
+          "word": "date",
+          "sentiment": 0.0
+        },
+        {
+          "word": "scheduled",
+          "sentiment": 0.0
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "november",
+          "sentiment": 0.0
+        },
+        {
+          "word": "29,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "2021",
+          "sentiment": 0.0
+        }
+      ]
+    }
+  ],
+  "actual_price": 153.58810424804688,
+  "predicted_price": 157.73440885110722,
+  "prev_price": 158.61268615722656,
+  "actual_move_pct": -3.1678310423410996,
+  "predicted_move_pct": -0.5537245017392505,
+  "error_pct": 2.614106540601849,
+  "model": "SARIMAX(1,1,1)"
+}

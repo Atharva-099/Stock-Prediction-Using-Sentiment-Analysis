@@ -1,0 +1,209 @@
+%% Comprehensive Report: Text Analysis for Financial Forecasting
+%% Stock Price Prediction Using Sentiment Analysis and Machine Learning
+%% Authors: Research Team
+%% Date: January 2026
+
+\documentclass[12pt,a4paper]{report}
+
+%% ============================================================================
+%% PACKAGES
+%% ============================================================================
+
+% Core packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Page layout
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% Mathematics
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+% Graphics and figures
+\usepackage{graphicx}
+\usepackage{float}
+
+% Tables
+\usepackage{longtable}
+\usepackage{array}
+
+% Colors and code
+\usepackage{xcolor}
+\usepackage{listings}
+
+% References and links
+\usepackage{hyperref}
+
+% Miscellaneous
+
+%% ============================================================================
+%% CONFIGURATION
+%% ============================================================================
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    citecolor=green,
+    pdftitle={Text Analysis for Financial Forecasting},
+    pdfauthor={Research Team},
+}
+
+% Code listing style
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=single
+}
+\lstset{style=mystyle}
+
+% Header and footer
+\pagestyle{plain}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+
+% Custom commands
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\matr}[1]{\mathbf{#1}}
+
+%% ============================================================================
+%% DOCUMENT
+%% ============================================================================
+
+\begin{document}
+
+%% ----------------------------------------------------------------------------
+%% TITLE PAGE
+%% ----------------------------------------------------------------------------
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries Text Analysis for Financial Forecasting\par}
+    \vspace{0.5cm}
+    {\LARGE Stock Price Prediction Using Sentiment Analysis\\and Machine Learning\par}
+    
+    \vspace{2cm}
+    
+    {\Large\itshape A Comprehensive Research Report\par}
+    
+    \vspace{2cm}
+    
+    \includegraphics[width=0.3\textwidth]{figures/01_comprehensive_distribution.png}
+    
+    \vspace{2cm}
+    
+    {\large
+    \textbf{Dataset:} 26 Years of Historical Data (1999-2025)\\
+    \textbf{Target:} Apple Inc. (AAPL) Stock Price\\
+    \textbf{Features:} 55 Engineered Features\\
+    \textbf{Models:} 9 Machine Learning Architectures\\
+    }
+    
+    \vfill
+    
+    {\large January 2026\par}
+\end{titlepage}
+
+%% ----------------------------------------------------------------------------
+%% FRONT MATTER
+%% ----------------------------------------------------------------------------
+\pagenumbering{roman}
+
+% Abstract
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+This comprehensive research report presents a novel approach to stock price forecasting that integrates natural language processing with advanced machine learning techniques. Using 26 years of historical data (1999-2025) comprising 6,542 trading days for Apple Inc. (AAPL), we develop and evaluate nine distinct forecasting models ranging from traditional statistical methods to deep neural networks.
+
+Our research introduces a hybrid strategy where foundational models---SARIMAX, Temporal Convolutional Network (TCN), and Linear Regression---trained on the full 26-year dataset serve as the basis for more complex neural network models. Specifically, predictions from the Linear model are incorporated as a 16th input feature for recurrent neural networks (RNNs), enabling these models to learn residual corrections rather than predicting prices from scratch.
+
+Key findings include:
+\begin{itemize}
+    \item \textbf{sklearn\_Linear} achieves the highest accuracy with $R^2 = 0.9992$, explaining 99.92\% of price variance
+    \item \textbf{SARIMAX} demonstrates excellent performance ($R^2 = 0.9984$) using walk-forward validation
+    \item The \textbf{Enhanced Ensemble} (Linear + SARIMAX + TCN) achieves $R^2 = 0.9898$
+    \item \textbf{Transformer} models fail catastrophically ($R^2 = -1.17$) due to fundamental task mismatch
+    \item RNNs perform better on recent 5-year data due to non-stationarity in long-term price series
+\end{itemize}
+
+The sentiment analysis pipeline processes over 57 million financial news articles from HuggingFace datasets, extracting features using TextBlob and VADER sentiment analyzers with multiple rolling windows (3, 7, 14, 30 days).
+
+\textbf{Keywords:} Stock Price Prediction, Sentiment Analysis, SARIMAX, TCN, LSTM, Transformer, Ensemble Methods, Financial Forecasting, Machine Learning
+
+\newpage
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% List of Figures
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\newpage
+
+% List of Tables
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\newpage
+
+%% ----------------------------------------------------------------------------
+%% MAIN MATTER
+%% ----------------------------------------------------------------------------
+\pagenumbering{arabic}
+
+\include{chapters/01_introduction}
+\include{chapters/02_data_collection}
+\include{chapters/03_feature_engineering}
+\include{chapters/04_foundational_models}
+\include{chapters/05_neural_networks}
+\include{chapters/06_transformer_analysis}
+\include{chapters/07_ensemble_methods}
+\include{chapters/08_results}
+\include{chapters/09_conclusion}
+
+%% ----------------------------------------------------------------------------
+%% BACK MATTER
+%% ----------------------------------------------------------------------------
+
+% Bibliography
+% Bibliography (requires bibtex - commented out for basic compile)
+% \bibliographystyle{plain}
+% \bibliography{references}
+
+% Appendices
+\appendix
+\include{chapters/appendices}
+
+\end{document}

@@ -1,0 +1,253 @@
+{
+  "date": "2021-11-30",
+  "event": {
+    "name": "Trading Day"
+  },
+  "headlines": [
+    {
+      "text": "Why Shares of Genetron Holdings Are Up More than 9.3% on Tuesday",
+      "sentiment": 0.296,
+      "words": [
+        {
+          "word": "why",
+          "sentiment": 0.0
+        },
+        {
+          "word": "shares",
+          "sentiment": 0.296
+        },
+        {
+          "word": "genetron",
+          "sentiment": 0.0
+        },
+        {
+          "word": "holdings",
+          "sentiment": 0.0
+        },
+        {
+          "word": "are",
+          "sentiment": 0.0
+        },
+        {
+          "word": "more",
+          "sentiment": 0.0
+        },
+        {
+          "word": "than",
+          "sentiment": 0.0
+        },
+        {
+          "word": "9.3%",
+          "sentiment": 0.0
+        },
+        {
+          "word": "tuesday",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "U.S. Thanksgiving weekend shopping loses sheen on early deals, smaller discounts",
+      "sentiment": -0.3182,
+      "words": [
+        {
+          "word": "u.s.",
+          "sentiment": 0.0
+        },
+        {
+          "word": "thanksgiving",
+          "sentiment": 0.0
+        },
+        {
+          "word": "weekend",
+          "sentiment": 0.0
+        },
+        {
+          "word": "shopping",
+          "sentiment": 0.0
+        },
+        {
+          "word": "loses",
+          "sentiment": -0.3182
+        },
+        {
+          "word": "sheen",
+          "sentiment": 0.0
+        },
+        {
+          "word": "early",
+          "sentiment": 0.0
+        },
+        {
+          "word": "deals,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "smaller",
+          "sentiment": 0.0
+        },
+        {
+          "word": "discounts",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Nine Energy Service Inc Shares Fall 7.0% Below Previous 52-Week Low - Market Mover",
+      "sentiment": 0.296,
+      "words": [
+        {
+          "word": "nine",
+          "sentiment": 0.0
+        },
+        {
+          "word": "energy",
+          "sentiment": 0.2732
+        },
+        {
+          "word": "service",
+          "sentiment": 0.0
+        },
+        {
+          "word": "inc",
+          "sentiment": 0.0
+        },
+        {
+          "word": "shares",
+          "sentiment": 0.296
+        },
+        {
+          "word": "fall",
+          "sentiment": 0.0
+        },
+        {
+          "word": "7.0%",
+          "sentiment": 0.0
+        },
+        {
+          "word": "below",
+          "sentiment": 0.0
+        },
+        {
+          "word": "previous",
+          "sentiment": 0.0
+        },
+        {
+          "word": "52-week",
+          "sentiment": 0.0
+        },
+        {
+          "word": "low",
+          "sentiment": -0.2732
+        },
+        {
+          "word": "market",
+          "sentiment": 0.0
+        },
+        {
+          "word": "mover",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Olivia Colman attends UK premiere of true-crime tale 'Landscapers'",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "olivia",
+          "sentiment": 0.0
+        },
+        {
+          "word": "colman",
+          "sentiment": 0.0
+        },
+        {
+          "word": "attends",
+          "sentiment": 0.0
+        },
+        {
+          "word": "premiere",
+          "sentiment": 0.0
+        },
+        {
+          "word": "true-crime",
+          "sentiment": 0.0
+        },
+        {
+          "word": "tale",
+          "sentiment": 0.0
+        },
+        {
+          "word": "'landscapers'",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Michigan drops federal case against Enbridge pipeline to clear way for state court case",
+      "sentiment": 0.3818,
+      "words": [
+        {
+          "word": "michigan",
+          "sentiment": 0.0
+        },
+        {
+          "word": "drops",
+          "sentiment": 0.0
+        },
+        {
+          "word": "federal",
+          "sentiment": 0.0
+        },
+        {
+          "word": "case",
+          "sentiment": 0.0
+        },
+        {
+          "word": "against",
+          "sentiment": 0.0
+        },
+        {
+          "word": "enbridge",
+          "sentiment": 0.0
+        },
+        {
+          "word": "pipeline",
+          "sentiment": 0.0
+        },
+        {
+          "word": "clear",
+          "sentiment": 0.3818
+        },
+        {
+          "word": "way",
+          "sentiment": 0.0
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "state",
+          "sentiment": 0.0
+        },
+        {
+          "word": "court",
+          "sentiment": 0.0
+        },
+        {
+          "word": "case",
+          "sentiment": 0.0
+        }
+      ]
+    }
+  ],
+  "actual_price": 161.90367126464844,
+  "predicted_price": 156.1208598978174,
+  "prev_price": 156.9476318359375,
+  "actual_move_pct": 3.157766301240944,
+  "predicted_move_pct": -0.5267820408939593,
+  "error_pct": 3.684548342134903,
+  "model": "SARIMAX(1,1,1)"
+}

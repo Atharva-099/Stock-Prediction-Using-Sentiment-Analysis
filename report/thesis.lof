@@ -1,0 +1,25 @@
+\babel@toc {english}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces AAPL Price Distribution Analysis (1999--2025). \textbf {Top Left:} Histogram shows heavy right skew (skewness = 1.23) with most observations at low price levels from the early period. \textbf {Top Right:} Box plot reveals median price around \$26 with extensive upper tail representing recent years. \textbf {Bottom Left:} Q-Q plot confirms departure from normality---empirical quantiles deviate substantially from theoretical normal quantiles. \textbf {Bottom Right:} Time series plot shows exponential growth pattern.}}{15}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Time Series Diagnostics for Order Selection. \textbf {Top:} ACF (Autocorrelation Function) shows slow exponential decay, a signature of non-stationarity. \textbf {Middle:} PACF (Partial Autocorrelation) shows significant spikes at lags 1 and 2, suggesting AR(2) structure after differencing. \textbf {Bottom:} Seasonal decomposition separates the strong upward trend (blue) from cyclical patterns (orange) and residual noise (green).}}{16}{figure.2.2}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Feature Correlation Matrix. Strong positive correlations (dark red) exist between price rolling means (Close\_RM7, Close\_RM14, Close\_RM30) and the target variable (Close), explaining Linear regression's high $R^2$. Sentiment features (textblob, vader) show weaker but positive correlations with the target. Inter-sentiment correlations are moderate (0.3--0.5), indicating TextBlob and VADER capture related but distinct information.}}{38}{figure.3.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {D.1}{\ignorespaces Linear Model Diagnostics. \textbf {Left:} Predicted vs actual plot shows near-perfect agreement along the diagonal. \textbf {Right:} Residual histogram is approximately normal with mean near zero. Slight heteroscedasticity visible at higher price levels indicates model performs slightly worse during the recent high-price regime (2020--2025).}}{73}{figure.D.1}%
+\contentsline {figure}{\numberline {D.2}{\ignorespaces TCN Model Diagnostics. The model captures overall trend but shows larger errors during volatile periods. The 2020 COVID crash and 2022 correction produce notable outliers in the residual distribution.}}{74}{figure.D.2}%
+\contentsline {figure}{\numberline {D.3}{\ignorespaces Model Performance Comparison. Bar chart showing RMSE for all models (excluding Transformer for scale). Linear and SARIMAX achieve lowest errors. Neural networks cluster in \$7--\$12 range. TCN shows higher error due to training on full 26-year non-stationary data.}}{75}{figure.D.3}%
+\contentsline {figure}{\numberline {D.4}{\ignorespaces Transformer Failure Analysis. \textbf {Left:} Scatter plot shows predictions clustering far from diagonal, with systematic under-prediction. \textbf {Right:} Error distribution is heavily skewed, indicating model learned training distribution mean but fails to generalize.}}{76}{figure.D.4}%
+\addvspace {10\p@ }

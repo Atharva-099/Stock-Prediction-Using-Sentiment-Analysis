@@ -1,0 +1,221 @@
+{
+  "date": "2021-12-15",
+  "event": {
+    "name": "Trading Day"
+  },
+  "headlines": [
+    {
+      "text": "Notable Wednesday Option Activity: AMN, ALB, RH",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "notable",
+          "sentiment": 0.0
+        },
+        {
+          "word": "wednesday",
+          "sentiment": 0.0
+        },
+        {
+          "word": "option",
+          "sentiment": 0.0
+        },
+        {
+          "word": "activity:",
+          "sentiment": 0.0
+        },
+        {
+          "word": "amn,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "alb,",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Wall Street climbs; Fed says it will end bond purchases in March",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "wall",
+          "sentiment": 0.0
+        },
+        {
+          "word": "street",
+          "sentiment": 0.0
+        },
+        {
+          "word": "climbs;",
+          "sentiment": 0.0
+        },
+        {
+          "word": "fed",
+          "sentiment": 0.0
+        },
+        {
+          "word": "says",
+          "sentiment": 0.0
+        },
+        {
+          "word": "will",
+          "sentiment": 0.0
+        },
+        {
+          "word": "end",
+          "sentiment": 0.0
+        },
+        {
+          "word": "bond",
+          "sentiment": 0.0
+        },
+        {
+          "word": "purchases",
+          "sentiment": 0.0
+        },
+        {
+          "word": "march",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "FOCUS-Airlines place their bets, looking past pandemic to renew fleets",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "focus-airlines",
+          "sentiment": 0.0
+        },
+        {
+          "word": "place",
+          "sentiment": 0.0
+        },
+        {
+          "word": "their",
+          "sentiment": 0.0
+        },
+        {
+          "word": "bets,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "looking",
+          "sentiment": 0.0
+        },
+        {
+          "word": "past",
+          "sentiment": 0.0
+        },
+        {
+          "word": "pandemic",
+          "sentiment": 0.0
+        },
+        {
+          "word": "renew",
+          "sentiment": 0.0
+        },
+        {
+          "word": "fleets",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "3 Things About Nvidia That Smart Investors Know",
+      "sentiment": 0.4019,
+      "words": [
+        {
+          "word": "things",
+          "sentiment": 0.0
+        },
+        {
+          "word": "about",
+          "sentiment": 0.0
+        },
+        {
+          "word": "nvidia",
+          "sentiment": 0.0
+        },
+        {
+          "word": "that",
+          "sentiment": 0.0
+        },
+        {
+          "word": "smart",
+          "sentiment": 0.4019
+        },
+        {
+          "word": "investors",
+          "sentiment": 0.0
+        },
+        {
+          "word": "know",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "The Stock Market Hasn't Done This Since 1983. What It Means for Investors",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "the",
+          "sentiment": 0.0
+        },
+        {
+          "word": "stock",
+          "sentiment": 0.0
+        },
+        {
+          "word": "market",
+          "sentiment": 0.0
+        },
+        {
+          "word": "hasn't",
+          "sentiment": 0.0
+        },
+        {
+          "word": "done",
+          "sentiment": 0.0
+        },
+        {
+          "word": "this",
+          "sentiment": 0.0
+        },
+        {
+          "word": "since",
+          "sentiment": 0.0
+        },
+        {
+          "word": "1983.",
+          "sentiment": 0.0
+        },
+        {
+          "word": "what",
+          "sentiment": 0.0
+        },
+        {
+          "word": "means",
+          "sentiment": 0.0
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "investors",
+          "sentiment": 0.0
+        }
+      ]
+    }
+  ],
+  "actual_price": 175.6160125732422,
+  "predicted_price": 169.26983556263843,
+  "prev_price": 170.7480926513672,
+  "actual_move_pct": 2.850936632021009,
+  "predicted_move_pct": -0.8657532074147692,
+  "error_pct": 3.7166898394357784,
+  "model": "SARIMAX(1,1,1)"
+}

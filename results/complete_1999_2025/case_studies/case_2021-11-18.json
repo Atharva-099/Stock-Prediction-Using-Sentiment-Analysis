@@ -1,0 +1,205 @@
+{
+  "date": "2021-11-18",
+  "event": {
+    "name": "Trading Day"
+  },
+  "headlines": [
+    {
+      "text": "February 2022 Options Now Available For Walmart (WMT)",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "february",
+          "sentiment": 0.0
+        },
+        {
+          "word": "2022",
+          "sentiment": 0.0
+        },
+        {
+          "word": "options",
+          "sentiment": 0.0
+        },
+        {
+          "word": "now",
+          "sentiment": 0.0
+        },
+        {
+          "word": "available",
+          "sentiment": 0.0
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "walmart",
+          "sentiment": 0.0
+        },
+        {
+          "word": "(wmt)",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "As Inflationary Pressures Remain, Gold Nears 5-Month High",
+      "sentiment": -0.3182,
+      "words": [
+        {
+          "word": "inflationary",
+          "sentiment": 0.0
+        },
+        {
+          "word": "pressures",
+          "sentiment": -0.3182
+        },
+        {
+          "word": "remain,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "gold",
+          "sentiment": 0.0
+        },
+        {
+          "word": "nears",
+          "sentiment": 0.0
+        },
+        {
+          "word": "5-month",
+          "sentiment": 0.0
+        },
+        {
+          "word": "high",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Financial Sector Update for 11/18/2021: FINV, VCTR, STC, XLF, FAS, FAZ",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "financial",
+          "sentiment": 0.0
+        },
+        {
+          "word": "sector",
+          "sentiment": 0.0
+        },
+        {
+          "word": "update",
+          "sentiment": 0.0
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "11/18/2021:",
+          "sentiment": 0.0
+        },
+        {
+          "word": "finv,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "vctr,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "stc,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "xlf,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "fas,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "faz",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Marketaxess Holdings Enters Oversold Territory (MKTX)",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "marketaxess",
+          "sentiment": 0.0
+        },
+        {
+          "word": "holdings",
+          "sentiment": 0.0
+        },
+        {
+          "word": "enters",
+          "sentiment": 0.0
+        },
+        {
+          "word": "oversold",
+          "sentiment": 0.0
+        },
+        {
+          "word": "territory",
+          "sentiment": 0.0
+        },
+        {
+          "word": "(mktx)",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Notable Two Hundred Day Moving Average Cross - TEX",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "notable",
+          "sentiment": 0.0
+        },
+        {
+          "word": "two",
+          "sentiment": 0.0
+        },
+        {
+          "word": "hundred",
+          "sentiment": 0.0
+        },
+        {
+          "word": "day",
+          "sentiment": 0.0
+        },
+        {
+          "word": "moving",
+          "sentiment": 0.0
+        },
+        {
+          "word": "average",
+          "sentiment": 0.0
+        },
+        {
+          "word": "cross",
+          "sentiment": 0.0
+        },
+        {
+          "word": "tex",
+          "sentiment": 0.0
+        }
+      ]
+    }
+  ],
+  "actual_price": 154.62631225585938,
+  "predicted_price": 154.51437005002683,
+  "prev_price": 150.3363037109375,
+  "actual_move_pct": 2.853607837246408,
+  "predicted_move_pct": 2.779146643862415,
+  "error_pct": 0.07446119338399315,
+  "model": "SARIMAX(1,1,1)"
+}

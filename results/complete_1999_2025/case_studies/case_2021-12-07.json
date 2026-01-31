@@ -1,0 +1,237 @@
+{
+  "date": "2021-12-07",
+  "event": {
+    "name": "Trading Day"
+  },
+  "headlines": [
+    {
+      "text": "ANALYSIS-Canadian banks' outsized reliance on mortgages could slow margin recovery",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "analysis-canadian",
+          "sentiment": 0.0
+        },
+        {
+          "word": "banks'",
+          "sentiment": 0.0
+        },
+        {
+          "word": "outsized",
+          "sentiment": 0.0
+        },
+        {
+          "word": "reliance",
+          "sentiment": 0.0
+        },
+        {
+          "word": "mortgages",
+          "sentiment": 0.0
+        },
+        {
+          "word": "could",
+          "sentiment": 0.0
+        },
+        {
+          "word": "slow",
+          "sentiment": 0.0
+        },
+        {
+          "word": "margin",
+          "sentiment": 0.0
+        },
+        {
+          "word": "recovery",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "EMXC Makes Bullish Cross Above Critical Moving Average",
+      "sentiment": -0.3182,
+      "words": [
+        {
+          "word": "emxc",
+          "sentiment": 0.0
+        },
+        {
+          "word": "makes",
+          "sentiment": 0.0
+        },
+        {
+          "word": "bullish",
+          "sentiment": 0.0
+        },
+        {
+          "word": "cross",
+          "sentiment": 0.0
+        },
+        {
+          "word": "above",
+          "sentiment": 0.0
+        },
+        {
+          "word": "critical",
+          "sentiment": -0.3182
+        },
+        {
+          "word": "moving",
+          "sentiment": 0.0
+        },
+        {
+          "word": "average",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Is Now The Time To Put Copart (NASDAQ:CPRT) On Your Watchlist?",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "now",
+          "sentiment": 0.0
+        },
+        {
+          "word": "the",
+          "sentiment": 0.0
+        },
+        {
+          "word": "time",
+          "sentiment": 0.0
+        },
+        {
+          "word": "put",
+          "sentiment": 0.0
+        },
+        {
+          "word": "copart",
+          "sentiment": 0.0
+        },
+        {
+          "word": "(nasdaq:cprt)",
+          "sentiment": 0.0
+        },
+        {
+          "word": "your",
+          "sentiment": 0.0
+        },
+        {
+          "word": "watchlist?",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Medical Properties Trust, Inc. (MPW) Ex-Dividend Date Scheduled for December 08, 2021",
+      "sentiment": 0.5106,
+      "words": [
+        {
+          "word": "medical",
+          "sentiment": 0.0
+        },
+        {
+          "word": "properties",
+          "sentiment": 0.0
+        },
+        {
+          "word": "trust,",
+          "sentiment": 0.5106
+        },
+        {
+          "word": "inc.",
+          "sentiment": 0.0
+        },
+        {
+          "word": "(mpw)",
+          "sentiment": 0.0
+        },
+        {
+          "word": "ex-dividend",
+          "sentiment": 0.0
+        },
+        {
+          "word": "date",
+          "sentiment": 0.0
+        },
+        {
+          "word": "scheduled",
+          "sentiment": 0.0
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "december",
+          "sentiment": 0.0
+        },
+        {
+          "word": "08,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "2021",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Oil CEOs clash with U.S. Energy Dept official over energy transition",
+      "sentiment": 0.4939,
+      "words": [
+        {
+          "word": "oil",
+          "sentiment": 0.0
+        },
+        {
+          "word": "ceos",
+          "sentiment": 0.0
+        },
+        {
+          "word": "clash",
+          "sentiment": 0.0
+        },
+        {
+          "word": "with",
+          "sentiment": 0.0
+        },
+        {
+          "word": "u.s.",
+          "sentiment": 0.0
+        },
+        {
+          "word": "energy",
+          "sentiment": 0.2732
+        },
+        {
+          "word": "dept",
+          "sentiment": 0.0
+        },
+        {
+          "word": "official",
+          "sentiment": 0.0
+        },
+        {
+          "word": "over",
+          "sentiment": 0.0
+        },
+        {
+          "word": "energy",
+          "sentiment": 0.2732
+        },
+        {
+          "word": "transition",
+          "sentiment": 0.0
+        }
+      ]
+    }
+  ],
+  "actual_price": 167.66282653808594,
+  "predicted_price": 165.03412451403705,
+  "prev_price": 161.92324829101562,
+  "actual_move_pct": 3.544628895262086,
+  "predicted_move_pct": 1.9212041852263342,
+  "error_pct": 1.623424710035752,
+  "model": "SARIMAX(1,1,1)"
+}

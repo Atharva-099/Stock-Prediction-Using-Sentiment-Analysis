@@ -1,0 +1,205 @@
+{
+  "date": "2021-12-08",
+  "event": {
+    "name": "Trading Day"
+  },
+  "headlines": [
+    {
+      "text": "XLK, V, CRM, CSCO: ETF Inflow Alert",
+      "sentiment": 0.296,
+      "words": [
+        {
+          "word": "xlk,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "crm,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "csco:",
+          "sentiment": 0.0
+        },
+        {
+          "word": "etf",
+          "sentiment": 0.0
+        },
+        {
+          "word": "inflow",
+          "sentiment": 0.0
+        },
+        {
+          "word": "alert",
+          "sentiment": 0.296
+        }
+      ]
+    },
+    {
+      "text": "GameStop Plunges as Liquidity Squeeze Crushes Meme Assets",
+      "sentiment": -0.296,
+      "words": [
+        {
+          "word": "gamestop",
+          "sentiment": 0.0
+        },
+        {
+          "word": "plunges",
+          "sentiment": 0.0
+        },
+        {
+          "word": "liquidity",
+          "sentiment": 0.0
+        },
+        {
+          "word": "squeeze",
+          "sentiment": 0.0
+        },
+        {
+          "word": "crushes",
+          "sentiment": -0.4404
+        },
+        {
+          "word": "meme",
+          "sentiment": 0.0
+        },
+        {
+          "word": "assets",
+          "sentiment": 0.1779
+        }
+      ]
+    },
+    {
+      "text": "First Week of February 2022 Options Trading For United Natural Foods (UNFI)",
+      "sentiment": 0.6486,
+      "words": [
+        {
+          "word": "first",
+          "sentiment": 0.0
+        },
+        {
+          "word": "week",
+          "sentiment": 0.0
+        },
+        {
+          "word": "february",
+          "sentiment": 0.0
+        },
+        {
+          "word": "2022",
+          "sentiment": 0.0
+        },
+        {
+          "word": "options",
+          "sentiment": 0.0
+        },
+        {
+          "word": "trading",
+          "sentiment": 0.0
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "united",
+          "sentiment": 0.4215
+        },
+        {
+          "word": "natural",
+          "sentiment": 0.3612
+        },
+        {
+          "word": "foods",
+          "sentiment": 0.0
+        },
+        {
+          "word": "(unfi)",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Noteworthy Wednesday Option Activity: MDGL, LVS, MRNA",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "noteworthy",
+          "sentiment": 0.0
+        },
+        {
+          "word": "wednesday",
+          "sentiment": 0.0
+        },
+        {
+          "word": "option",
+          "sentiment": 0.0
+        },
+        {
+          "word": "activity:",
+          "sentiment": 0.0
+        },
+        {
+          "word": "mdgl,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "lvs,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "mrna",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Nubank (NU Stock) IPO: Here\u2019s What Investors Need To Know",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "nubank",
+          "sentiment": 0.0
+        },
+        {
+          "word": "(nu",
+          "sentiment": 0.0
+        },
+        {
+          "word": "stock)",
+          "sentiment": 0.0
+        },
+        {
+          "word": "ipo:",
+          "sentiment": 0.0
+        },
+        {
+          "word": "here\u2019s",
+          "sentiment": 0.0
+        },
+        {
+          "word": "what",
+          "sentiment": 0.0
+        },
+        {
+          "word": "investors",
+          "sentiment": 0.0
+        },
+        {
+          "word": "need",
+          "sentiment": 0.0
+        },
+        {
+          "word": "know",
+          "sentiment": 0.0
+        }
+      ]
+    }
+  ],
+  "actual_price": 171.48269653320312,
+  "predicted_price": 171.22342448856506,
+  "prev_price": 167.66282653808594,
+  "actual_move_pct": 2.278304662989487,
+  "predicted_move_pct": 2.123665706942083,
+  "error_pct": 0.15463895604740419,
+  "model": "SARIMAX(1,1,1)"
+}

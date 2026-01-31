@@ -1,0 +1,122 @@
+========================================
+FINANCIAL FORECASTING - HOW TO RUN
+========================================
+
+CLEAN PROJECT STRUCTURE
+=======================
+
+Python Scripts (Main):
+----------------------
+1. research_backed_pipeline.py    - MAIN SCRIPT: Research-backed models with attention LSTM
+2. complete_1999_2025_all_models.py - Full pipeline with all 12 models (SARIMAX + Neural Networks)
+3. run_analysis.py                 - Original analysis script
+
+Supporting Scripts:
+-------------------
+- advanced_sentiment.py           - Multi-method sentiment analysis
+- fetch_missing_years.py          - Data fetching for missing years
+- check_data_availability.py      - Check data coverage
+- compare_sources_graph.py        - Visualization of news sources
+- news_frequency.py               - News frequency analysis
+
+Source Code (src/):
+-------------------
+- enhanced_news_fetcher_2024_2025.py - Fetches 2024-2025 news from multiple RSS sources
+- fnspid_official_fetcher.py        - FNSPID dataset fetcher
+- historical_data_fetcher.py        - Historical data fetching
+- data_preprocessor.py              - Data processing utilities
+- tcn_model.py                      - TCN model implementation
+
+DATA COVERAGE
+=============
+- 1999-2008: 229,353 articles (FNSPID)
+- 2009-2020: 240,000 articles (Multi-source HuggingFace)
+- 2021-2023: 90,000 articles (FNSPID)
+- 2024-2025: ~1,837 articles (Enhanced RSS - Google News, Reuters, Bloomberg, WSJ)
+
+TOTAL: ~561,000+ news articles for 1999-2025
+
+RUNNING THE PIPELINE
+====================
+
+# Load modules (required on HPC)
+module load gcc/14.2.0 python3/3.11.8
+
+# Set environment variables
+export TOKENIZERS_PARALLELISM=false
+
+# Run the research-backed pipeline (RECOMMENDED)
+python3 research_backed_pipeline.py 2>&1 | tee logs/research_backed.log
+
+# Or run all models (takes longer)
+python3 complete_1999_2025_all_models.py 2>&1 | tee logs/complete_1999_2025.log
+
+MODELS IMPLEMENTED
+==================
+
+Research-Backed Models (research_backed_pipeline.py):
+- AttentionLSTM (LSTM with attention mechanism - arxiv.org/abs/1812.07699)
+- BiLSTM-Attention (Bidirectional LSTM with attention)
+- StackedLSTM (Deep stacked LSTM with residual connections)
+- TFT (Simplified Temporal Fusion Transformer)
+- Ensemble (Average of all models)
+
+All Models (complete_1999_2025_all_models.py):
+- SARIMAX (Statistical baseline)
+- Single-Layer Linear Network
+- LSTM, BiLSTM, GRU
+- TCN (Temporal Convolutional Network)
+- CNN-LSTM, Attention-LSTM
+- Transformer (Full, Medium, Small variants)
+- Ensemble
+
+FEATURES (48 Total)
+===================
+Technical Indicators:
+- SMA/EMA (5, 10, 20, 50, 100, 200 days)
+- RSI (14-day), MACD, MACD Signal, MACD Histogram
+- Bollinger Bands (Upper, Lower, Width, Position)
+- ATR (Average True Range)
+- Volatility (5, 10, 20, 50 days)
+- Momentum, ROC (Rate of Change)
+- Volume features (SMA, Ratio, OBV)
+
+Sentiment Features:
+- Daily sentiment mean, std
+- Article count
+- Rolling sentiment (3, 7, 14 days)
+
+RESULTS DIRECTORY
+=================
+results/
+├── research_backed/     - Research-backed models results
+│   ├── model_comparison.csv
+│   └── plots/
+├── complete_1999_2025/  - All models results
+│   ├── COMPREHENSIVE_REPORT.md
+│   ├── model_comparison.csv
+│   ├── case_studies/
+│   └── plots/
+└── enhanced_v2/         - Enhanced training results
+
+KEY IMPROVEMENTS (Nov 2025)
+===========================
+1. Enhanced 2024-2025 data: 1,837 articles vs 40 (from multiple RSS sources)
+2. Attention-based LSTM models (from research papers)
+3. 48 technical & sentiment features (RSI, MACD, Bollinger, etc.)
+4. Test only on dates with proper news coverage (up to 2023)
+5. Predicting price CHANGE (easier than absolute price)
+6. Proper train/val/test split with no data leakage
+7. Cosine annealing learning rate schedule
+8. AdamW optimizer with weight decay
+
+PROFESSOR'S REQUIREMENTS (All Addressed)
+========================================
+✓ Case study section with headline analysis
+✓ Inverse-scaling fix for normalization
+✓ Non-Apple news (market-wide, Fed, supply chain)
+✓ Rolling prediction with full window
+✓ SARIMAX baseline (differencing order 1)
+✓ Single-layer linear network comparison
+✓ Transformer variants (64d-4h-2L, 32d-2h-1L, 16d-2h-1L)
+✓ Epoch loops and train/val split reviewed

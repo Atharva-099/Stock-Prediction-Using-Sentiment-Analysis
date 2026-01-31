@@ -1,0 +1,217 @@
+{
+  "date": "2021-12-06",
+  "event": {
+    "name": "Trading Day"
+  },
+  "headlines": [
+    {
+      "text": "Nasdaq 100 Movers: AMD, BKNG",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "nasdaq",
+          "sentiment": 0.0
+        },
+        {
+          "word": "100",
+          "sentiment": 0.0
+        },
+        {
+          "word": "movers:",
+          "sentiment": 0.0
+        },
+        {
+          "word": "amd,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "bkng",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Investors are selling off GAN (NASDAQ:GAN), lack of profits no doubt contribute to shareholders one-year loss",
+      "sentiment": 0.1053,
+      "words": [
+        {
+          "word": "investors",
+          "sentiment": 0.0
+        },
+        {
+          "word": "are",
+          "sentiment": 0.0
+        },
+        {
+          "word": "selling",
+          "sentiment": 0.0
+        },
+        {
+          "word": "off",
+          "sentiment": 0.0
+        },
+        {
+          "word": "gan",
+          "sentiment": 0.0
+        },
+        {
+          "word": "(nasdaq:gan),",
+          "sentiment": 0.0
+        },
+        {
+          "word": "lack",
+          "sentiment": -0.3182
+        },
+        {
+          "word": "profits",
+          "sentiment": 0.4404
+        },
+        {
+          "word": "doubt",
+          "sentiment": -0.3612
+        },
+        {
+          "word": "contribute",
+          "sentiment": 0.0
+        },
+        {
+          "word": "shareholders",
+          "sentiment": 0.0
+        },
+        {
+          "word": "one-year",
+          "sentiment": 0.0
+        },
+        {
+          "word": "loss",
+          "sentiment": -0.3182
+        }
+      ]
+    },
+    {
+      "text": "Ex-Dividend Reminder: Bentley Systems, Canadian National Railway and Franco-Nevada",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "ex-dividend",
+          "sentiment": 0.0
+        },
+        {
+          "word": "reminder:",
+          "sentiment": 0.0
+        },
+        {
+          "word": "bentley",
+          "sentiment": 0.0
+        },
+        {
+          "word": "systems,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "canadian",
+          "sentiment": 0.0
+        },
+        {
+          "word": "national",
+          "sentiment": 0.0
+        },
+        {
+          "word": "railway",
+          "sentiment": 0.0
+        },
+        {
+          "word": "and",
+          "sentiment": 0.0
+        },
+        {
+          "word": "franco-nevada",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "EU regulator backs Roche's arthritis drug for treating severe COVID-19",
+      "sentiment": -0.4215,
+      "words": [
+        {
+          "word": "regulator",
+          "sentiment": 0.0
+        },
+        {
+          "word": "backs",
+          "sentiment": -0.0516
+        },
+        {
+          "word": "roche's",
+          "sentiment": 0.0
+        },
+        {
+          "word": "arthritis",
+          "sentiment": 0.0
+        },
+        {
+          "word": "drug",
+          "sentiment": 0.0
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "treating",
+          "sentiment": 0.0
+        },
+        {
+          "word": "severe",
+          "sentiment": -0.3818
+        },
+        {
+          "word": "covid-19",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "OMFL, ON, DELL, SYF: ETF Inflow Alert",
+      "sentiment": 0.296,
+      "words": [
+        {
+          "word": "omfl,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "on,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "dell,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "syf:",
+          "sentiment": 0.0
+        },
+        {
+          "word": "etf",
+          "sentiment": 0.0
+        },
+        {
+          "word": "inflow",
+          "sentiment": 0.0
+        },
+        {
+          "word": "alert",
+          "sentiment": 0.296
+        }
+      ]
+    }
+  ],
+  "actual_price": 161.92324829101562,
+  "predicted_price": 159.93773447110013,
+  "prev_price": 158.51475524902344,
+  "actual_move_pct": 2.1502686211372026,
+  "predicted_move_pct": 0.8976951198273119,
+  "error_pct": 1.2525735013098909,
+  "model": "SARIMAX(1,1,1)"
+}

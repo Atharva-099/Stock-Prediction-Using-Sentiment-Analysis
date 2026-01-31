@@ -1,0 +1,209 @@
+{
+  "fnspid": {
+    "dataset": "FNSPID (Financial News and Stock Price Integration)",
+    "source": "Brianferrell787/financial-news-multisource",
+    "data_files": "data/fnspid_news/*.parquet",
+    "expected_range": "1999-2023",
+    "scanned_records": 20000,
+    "found_date_range": {
+      "min": "2009-04-29 00:00:00+00:00",
+      "max": "2020-06-10 11:17:32+00:00"
+    },
+    "yearly_distribution": {
+      "2009": 739,
+      "2010": 1429,
+      "2011": 1729,
+      "2012": 1368,
+      "2013": 1526,
+      "2014": 1973,
+      "2015": 1766,
+      "2016": 1685,
+      "2017": 1808,
+      "2018": 2093,
+      "2019": 2011,
+      "2020": 1873
+    },
+    "top_sources": {
+      "Unknown": 20000
+    },
+    "years_available": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ]
+  },
+  "ashraq": {
+    "dataset": "ashraq/financial-news",
+    "expected_range": "2020-2025",
+    "found_date_range": {
+      "min": "2010-03-04 00:00:00",
+      "max": "2020-06-03 00:00:00"
+    },
+    "yearly_distribution": {
+      "2010": 31,
+      "2011": 134,
+      "2012": 464,
+      "2013": 378,
+      "2014": 637,
+      "2015": 1797,
+      "2016": 1249,
+      "2017": 844,
+      "2018": 1544,
+      "2019": 1787,
+      "2020": 1135
+    },
+    "years_available": [
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ],
+    "sampled": 10000
+  },
+  "rss": {
+    "Google News (Finance)": {
+      "url": "https://news.google.com/rss/search?q=stock+market&hl=en-US&gl=US&ceid=US:en",
+      "articles_available": 99,
+      "date_range": {
+        "min": "2025-11-24 13:24:03",
+        "max": "2025-11-29 14:07:17"
+      },
+      "days_of_coverage": 5
+    },
+    "Yahoo Finance": {
+      "url": "https://finance.yahoo.com/rss/",
+      "articles_available": 46,
+      "date_range": {
+        "min": "2025-11-25 19:49:38+00:00",
+        "max": "2025-11-29 16:07:00+00:00"
+      },
+      "days_of_coverage": 3
+    },
+    "CNBC": {
+      "url": "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10001147",
+      "articles_available": 30,
+      "date_range": {
+        "min": "2025-11-20 15:45:26",
+        "max": "2025-11-28 17:29:33"
+      },
+      "days_of_coverage": 8
+    },
+    "MarketWatch": {
+      "url": "https://feeds.marketwatch.com/marketwatch/topstories/",
+      "articles_available": 10,
+      "date_range": {
+        "min": "2025-11-29 13:30:00",
+        "max": "2025-11-29 16:12:00"
+      },
+      "days_of_coverage": 0
+    }
+  },
+  "summary": {
+    "all_years": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2024,
+      2025
+    ],
+    "year_sources": {
+      "2009": [
+        "FNSPID (HuggingFace)"
+      ],
+      "2010": [
+        "FNSPID (HuggingFace)",
+        "ashraq/financial-news"
+      ],
+      "2011": [
+        "FNSPID (HuggingFace)",
+        "ashraq/financial-news"
+      ],
+      "2012": [
+        "FNSPID (HuggingFace)",
+        "ashraq/financial-news"
+      ],
+      "2013": [
+        "FNSPID (HuggingFace)",
+        "ashraq/financial-news"
+      ],
+      "2014": [
+        "FNSPID (HuggingFace)",
+        "ashraq/financial-news"
+      ],
+      "2015": [
+        "FNSPID (HuggingFace)",
+        "ashraq/financial-news"
+      ],
+      "2016": [
+        "FNSPID (HuggingFace)",
+        "ashraq/financial-news"
+      ],
+      "2017": [
+        "FNSPID (HuggingFace)",
+        "ashraq/financial-news"
+      ],
+      "2018": [
+        "FNSPID (HuggingFace)",
+        "ashraq/financial-news"
+      ],
+      "2019": [
+        "FNSPID (HuggingFace)",
+        "ashraq/financial-news"
+      ],
+      "2020": [
+        "FNSPID (HuggingFace)",
+        "ashraq/financial-news"
+      ],
+      "2025": [
+        "RSS Feeds"
+      ],
+      "2024": [
+        "RSS Feeds (partial)"
+      ]
+    },
+    "train_years": [
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020
+    ],
+    "finetune_years": [
+      2024,
+      2025
+    ],
+    "validation_year": 2025
+  }
+}

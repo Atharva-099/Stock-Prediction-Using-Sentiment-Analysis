@@ -1,0 +1,81 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Transformer Analysis}{39}{chapter.6}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:transformer_analysis}{{6}{39}{Transformer Analysis}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Overview}{39}{section.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Transformer Variations Tested}}{39}{table.6.1}\protected@file@percent }
+\newlabel{tab:transformer_variations}{{6.1}{39}{Transformer Variations Tested}{table.6.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Transformer Architecture}{39}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Self-Attention Mechanism}{39}{subsection.6.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Implementation}{40}{subsection.6.2.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.1}Transformer Architecture}{40}{lstlisting.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Failure Analysis}{40}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Training Dynamics}{40}{subsection.6.3.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.2}Training Log Analysis}{40}{lstlisting.6.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.3}Test Results}{41}{lstlisting.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Root Cause 1: Task Mismatch}{41}{subsection.6.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces Task Type Comparison}}{41}{table.6.2}\protected@file@percent }
+\newlabel{tab:task_mismatch}{{6.2}{41}{Task Type Comparison}{table.6.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.4}Input Reshaping}{41}{lstlisting.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}Root Cause 2: Architecture Mismatch}{42}{subsection.6.3.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.3}{\ignorespaces Transformer Components Analysis}}{42}{table.6.3}\protected@file@percent }
+\newlabel{tab:arch_mismatch}{{6.3}{42}{Transformer Components Analysis}{table.6.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.4}Root Cause 3: Output Distribution Mismatch}{42}{subsection.6.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}What We Tried to Fix It}{42}{section.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Attempt 1: Architecture Reduction}{42}{subsection.6.4.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.5}Reduced Architecture}{42}{lstlisting.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Attempt 2: Scaler Reference Fix}{43}{subsection.6.4.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.6}Deep Copy Scaler}{43}{lstlisting.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Attempt 3: Variable Preservation}{43}{subsection.6.4.3}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.7}Variable Preservation}{43}{lstlisting.6.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.4}Attempt 4: Training Location}{43}{subsection.6.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Why Other Models Succeed}{43}{section.6.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.4}{\ignorespaces Model Mechanism Comparison}}{43}{table.6.4}\protected@file@percent }
+\newlabel{tab:model_comparison}{{6.4}{43}{Model Mechanism Comparison}{table.6.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}Transformer Failure Visualization}{44}{section.6.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Transformer Failure Analysis. The figure demonstrates the catastrophic prediction errors including: (a) Predicted vs Actual scatter showing extreme divergence, (b) Error distribution, (c) Time series comparison showing predictions completely missing the target, and (d) Summary of failure modes.}}{44}{figure.6.1}\protected@file@percent }
+\newlabel{fig:transformer_failure}{{6.1}{44}{Transformer Failure Analysis. The figure demonstrates the catastrophic prediction errors including: (a) Predicted vs Actual scatter showing extreme divergence, (b) Error distribution, (c) Time series comparison showing predictions completely missing the target, and (d) Summary of failure modes}{figure.6.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.7}Interpretation of Negative R²}{44}{section.6.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.8}What Would Actually Fix Transformer}{45}{section.6.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.8.1}Option 1: Time Series Transformers}{45}{subsection.6.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.8.2}Option 2: Sequence Reformulation}{45}{subsection.6.8.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.8}Sequence Reformulation}{45}{lstlisting.6.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.8.3}Option 3: Feature Dimension as Sequence}{45}{subsection.6.8.3}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.9}Features as Sequence}{45}{lstlisting.6.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.9}Lessons Learned}{45}{section.6.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.10}Recommendations for Practitioners}{46}{section.6.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.11}Summary}{46}{section.6.11}\protected@file@percent }
+\@setckpt{chapters/06_transformer_analysis}{
+\setcounter{page}{47}
+\setcounter{equation}{4}
+\setcounter{enumi}{4}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{6}
+\setcounter{section}{11}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{1}
+\setcounter{table}{4}
+\setcounter{parentequation}{0}
+\setcounter{float@type}{8}
+\setcounter{LT@tables}{0}
+\setcounter{LT@chunks}{0}
+\setcounter{lstnumber}{5}
+\setcounter{section@level}{1}
+\setcounter{Item}{47}
+\setcounter{Hfootnote}{0}
+\setcounter{bookmark@seq@number}{128}
+\setcounter{theorem}{0}
+\setcounter{definition}{2}
+\setcounter{lemma}{0}
+\setcounter{lstlisting}{9}
+}

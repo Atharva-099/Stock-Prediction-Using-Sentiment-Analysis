@@ -1,0 +1,253 @@
+{
+  "date": "2021-12-13",
+  "event": {
+    "name": "Trading Day"
+  },
+  "headlines": [
+    {
+      "text": "HSBC and Wells Fargo use blockchain to settle forex trades",
+      "sentiment": 0.25,
+      "words": [
+        {
+          "word": "hsbc",
+          "sentiment": 0.0
+        },
+        {
+          "word": "and",
+          "sentiment": 0.0
+        },
+        {
+          "word": "wells",
+          "sentiment": 0.25
+        },
+        {
+          "word": "fargo",
+          "sentiment": 0.0
+        },
+        {
+          "word": "use",
+          "sentiment": 0.0
+        },
+        {
+          "word": "blockchain",
+          "sentiment": 0.0
+        },
+        {
+          "word": "settle",
+          "sentiment": 0.0
+        },
+        {
+          "word": "forex",
+          "sentiment": 0.0
+        },
+        {
+          "word": "trades",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "MFS Intermediate Income Trust (MIN) Ex-Dividend Date Scheduled for December 14, 2021",
+      "sentiment": 0.5106,
+      "words": [
+        {
+          "word": "mfs",
+          "sentiment": 0.0
+        },
+        {
+          "word": "intermediate",
+          "sentiment": 0.0
+        },
+        {
+          "word": "income",
+          "sentiment": 0.0
+        },
+        {
+          "word": "trust",
+          "sentiment": 0.5106
+        },
+        {
+          "word": "(min)",
+          "sentiment": 0.0
+        },
+        {
+          "word": "ex-dividend",
+          "sentiment": 0.0
+        },
+        {
+          "word": "date",
+          "sentiment": 0.0
+        },
+        {
+          "word": "scheduled",
+          "sentiment": 0.0
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "december",
+          "sentiment": 0.0
+        },
+        {
+          "word": "14,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "2021",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Conservative Investors Will Prosper With Bank of America Stock",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "conservative",
+          "sentiment": 0.0
+        },
+        {
+          "word": "investors",
+          "sentiment": 0.0
+        },
+        {
+          "word": "will",
+          "sentiment": 0.0
+        },
+        {
+          "word": "prosper",
+          "sentiment": 0.0
+        },
+        {
+          "word": "with",
+          "sentiment": 0.0
+        },
+        {
+          "word": "bank",
+          "sentiment": 0.0
+        },
+        {
+          "word": "america",
+          "sentiment": 0.0
+        },
+        {
+          "word": "stock",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Duff & Phelps Utility and Infrastructure Fund Inc. (DPG) Ex-Dividend Date Scheduled for December 14, 2021",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "duff",
+          "sentiment": 0.0
+        },
+        {
+          "word": "phelps",
+          "sentiment": 0.0
+        },
+        {
+          "word": "utility",
+          "sentiment": 0.0
+        },
+        {
+          "word": "and",
+          "sentiment": 0.0
+        },
+        {
+          "word": "infrastructure",
+          "sentiment": 0.0
+        },
+        {
+          "word": "fund",
+          "sentiment": 0.0
+        },
+        {
+          "word": "inc.",
+          "sentiment": 0.0
+        },
+        {
+          "word": "(dpg)",
+          "sentiment": 0.0
+        },
+        {
+          "word": "ex-dividend",
+          "sentiment": 0.0
+        },
+        {
+          "word": "date",
+          "sentiment": 0.0
+        },
+        {
+          "word": "scheduled",
+          "sentiment": 0.0
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "december",
+          "sentiment": 0.0
+        },
+        {
+          "word": "14,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "2021",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Could Tesla Be the World's Most Valuable Company in 10 to 15 Years?",
+      "sentiment": 0.5256,
+      "words": [
+        {
+          "word": "could",
+          "sentiment": 0.0
+        },
+        {
+          "word": "tesla",
+          "sentiment": 0.0
+        },
+        {
+          "word": "the",
+          "sentiment": 0.0
+        },
+        {
+          "word": "world's",
+          "sentiment": 0.0
+        },
+        {
+          "word": "most",
+          "sentiment": 0.0
+        },
+        {
+          "word": "valuable",
+          "sentiment": 0.4767
+        },
+        {
+          "word": "company",
+          "sentiment": 0.0
+        },
+        {
+          "word": "years?",
+          "sentiment": 0.0
+        }
+      ]
+    }
+  ],
+  "actual_price": 172.12911987304688,
+  "predicted_price": 177.38580202777484,
+  "prev_price": 175.76290893554688,
+  "actual_move_pct": -2.0674379392710938,
+  "predicted_move_pct": 0.9233421898035903,
+  "error_pct": 2.9907801290746843,
+  "model": "SARIMAX(1,1,1)"
+}

@@ -1,0 +1,13 @@
+{
+  "all_fields": [
+    "headline",
+    "url",
+    "publisher",
+    "date",
+    "stock"
+  ],
+  "date_field": "publisher",
+  "text_field": "headline",
+  "date_field_sample": "GuruFocus",
+  "text_field_sample": "Agilent Technologies Announces Pricing of $5\u2026\u2026 Million of Senior Notes"
+}

@@ -1,0 +1,337 @@
+%% Appendices
+\chapter{Code Implementation Details}
+\label{app:code}
+
+This appendix provides detailed code listings for key components of the forecasting system.
+
+\section{Evaluation Metrics Implementation}
+
+\begin{lstlisting}[language=Python, caption=Evaluation Metrics (src/evaluation\_metrics.py)]
+def compute_all_metrics(y_true, y_pred):
+    """
+    Compute comprehensive evaluation metrics.
+    
+    Args:
+        y_true: Array of actual values
+        y_pred: Array of predicted values
+    
+    Returns:
+        Dictionary with RMSE, MAE, MAPE, R2
+    """
+    from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+    import numpy as np
+    
+    rmse = np.sqrt(mean_squared_error(y_true, y_pred))
+    mae = mean_absolute_error(y_true, y_pred)
+    
+    # MAPE (avoid division by zero)
+    valid_mask = y_true != 0
+    mape = np.mean(np.abs(
+        (y_true[valid_mask] - y_pred[valid_mask]) / y_true[valid_mask]
+    )) * 100
+    
+    r2 = r2_score(y_true, y_pred)
+    
+    return {
+        'rmse': rmse,
+        'mae': mae,
+        'mape': mape,
+        'r2': r2
+    }
+\end{lstlisting}
+
+\section{TCN Model Architecture}
+
+\begin{lstlisting}[language=Python, caption=TCN Implementation (src/tcn\_model.py)]
+class Chomp1d(nn.Module):
+    """Removes trailing padding from temporal convolutions"""
+    def __init__(self, chomp_size):
+        super().__init__()
+        self.chomp_size = chomp_size
+
+    def forward(self, x):
+        return x[:, :, :-self.chomp_size].contiguous()
+
+
+class TemporalBlock(nn.Module):
+    """Single TCN temporal block with residual connection"""
+    def __init__(self, n_inputs, n_outputs, kernel_size, 
+                 stride, dilation, padding, dropout=0.2):
+        super().__init__()
+        self.conv1 = weight_norm(nn.Conv1d(
+            n_inputs, n_outputs, kernel_size,
+            stride=stride, padding=padding, dilation=dilation
+        ))
+        self.chomp1 = Chomp1d(padding)
+        self.relu1 = nn.ReLU()
+        self.dropout1 = nn.Dropout(dropout)
+        
+        self.conv2 = weight_norm(nn.Conv1d(
+            n_outputs, n_outputs, kernel_size,
+            stride=stride, padding=padding, dilation=dilation
+        ))
+        self.chomp2 = Chomp1d(padding)
+        self.relu2 = nn.ReLU()
+        self.dropout2 = nn.Dropout(dropout)
+        
+        self.net = nn.Sequential(
+            self.conv1, self.chomp1, self.relu1, self.dropout1,
+            self.conv2, self.chomp2, self.relu2, self.dropout2
+        )
+        
+        self.downsample = nn.Conv1d(n_inputs, n_outputs, 1)
+        self.relu = nn.ReLU()
+        self.init_weights()
+
+    def init_weights(self):
+        self.conv1.weight.data.normal_(0, 0.01)
+        self.conv2.weight.data.normal_(0, 0.01)
+        self.downsample.weight.data.normal_(0, 0.01)
+
+    def forward(self, x):
+        out = self.net(x)
+        res = self.downsample(x)
+        return self.relu(out + res)
+\end{lstlisting}
+
+\section{SARIMAX Walk-Forward Validation}
+
+\begin{lstlisting}[language=Python, caption=Walk-Forward SARIMAX]
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+import numpy as np
+
+def walk_forward_sarimax(train_data, test_data, exog_train, exog_test, 
+                          order=(2,1,1)):
+    """
+    Walk-forward validation for SARIMAX.
+    
+    Args:
+        train_data: Training time series
+        test_data: Test time series
+        exog_train: Exogenous training variables
+        exog_test: Exogenous test variables
+        order: ARIMA order (p, d, q)
+    
+    Returns:
+        List of predictions
+    """
+    history = list(train_data)
+    history_exog = list(exog_train)
+    predictions = []
+    
+    for t in range(len(test_data)):
+        try:
+            model = SARIMAX(
+                history, 
+                exog=np.array(history_exog).reshape(len(history_exog), -1),
+                order=order, 
+                enforce_stationarity=False, 
+                enforce_invertibility=False
+            )
+            model_fit = model.fit(disp=False, maxiter=50)
+            yhat = model_fit.forecast(
+                steps=1, 
+                exog=exog_test[t].reshape(1, -1)
+            )[0]
+        except Exception:
+            yhat = history[-1]  # Fallback
+        
+        predictions.append(yhat)
+        history.append(test_data[t])
+        history_exog.append(exog_test[t])
+    
+    return predictions
+\end{lstlisting}
+
+\section{Hybrid Feature Generation}
+
+\begin{lstlisting}[language=Python, caption=Hybrid Feature (16th Feature) Generation]
+def generate_hybrid_features(lr_model, X_train, X_test, scaler_X):
+    """
+    Generate Linear model predictions as 16th feature for RNNs.
+    
+    Args:
+        lr_model: Trained LinearRegression model
+        X_train: Training features
+        X_test: Test features
+        scaler_X: Fitted MinMaxScaler for features
+    
+    Returns:
+        Tuple of (X_train_with_linear, X_test_with_linear)
+    """
+    import numpy as np
+    
+    # Generate predictions
+    linear_pred_train = lr_model.predict(scaler_X.transform(X_train))
+    linear_pred_test = lr_model.predict(scaler_X.transform(X_test))
+    
+    # Scale the original features
+    X_train_scaled = scaler_X.transform(X_train)
+    X_test_scaled = scaler_X.transform(X_test)
+    
+    # Concatenate as 16th feature
+    X_train_with_linear = np.concatenate([
+        X_train_scaled,
+        linear_pred_train.reshape(-1, 1)
+    ], axis=1)
+    
+    X_test_with_linear = np.concatenate([
+        X_test_scaled,
+        linear_pred_test.reshape(-1, 1)
+    ], axis=1)
+    
+    return X_train_with_linear, X_test_with_linear
+\end{lstlisting}
+
+\chapter{Complete Results Tables}
+\label{app:results}
+
+\section{All Model Metrics}
+
+\begin{longtable}{lrrrrl}
+\caption{Complete Model Results with All Metrics} \\
+\toprule
+\textbf{Model} & \textbf{RMSE} & \textbf{MAE} & \textbf{MAPE} & \textbf{R²} & \textbf{Dataset} \\
+\midrule
+\endfirsthead
+\caption[]{Complete Model Results (continued)} \\
+\toprule
+\textbf{Model} & \textbf{RMSE} & \textbf{MAE} & \textbf{MAPE} & \textbf{R²} & \textbf{Dataset} \\
+\midrule
+\endhead
+sklearn\_Linear & 1.83 & 1.24 & 0.94 & 0.9992 & 26-year \\
+SARIMAX & 2.66 & 1.89 & 1.18 & 0.9984 & 26-year \\
+Ensemble (L+S+T) & 6.66 & 5.34 & 3.45 & 0.9898 & 26-year \\
+TCN & 21.16 & 17.42 & 11.04 & 0.8969 & 26-year \\
+CNN-LSTM & 7.34 & 6.01 & 2.64 & 0.8939 & 5-year \\
+GRU & 7.63 & 6.44 & 2.78 & 0.8856 & 5-year \\
+BiLSTM & 7.77 & 6.33 & 2.81 & 0.8812 & 5-year \\
+LSTM & 12.12 & 10.58 & 4.54 & 0.7109 & 5-year \\
+Transformer & 97.01 & 77.41 & 44.89 & -1.17 & 26-year \\
+\bottomrule
+\end{longtable}
+
+\section{Hyperparameter Summary}
+
+\begin{longtable}{llr}
+\caption{Hyperparameters for All Models} \\
+\toprule
+\textbf{Model} & \textbf{Parameter} & \textbf{Value} \\
+\midrule
+\endfirsthead
+\caption[]{Hyperparameters (continued)} \\
+\toprule
+\textbf{Model} & \textbf{Parameter} & \textbf{Value} \\
+\midrule
+\endhead
+SARIMAX & Order (p,d,q) & (2,1,1) \\
+SARIMAX & Maxiter & 50 \\
+\midrule
+TCN & Hidden Channels & [64, 128, 64] \\
+TCN & Kernel Size & 3 \\
+TCN & Dropout & 0.2 \\
+TCN & Epochs & 60 \\
+\midrule
+LSTM/BiLSTM/GRU & Hidden Size & 64 \\
+LSTM/BiLSTM/GRU & Layers & 2 \\
+LSTM/BiLSTM/GRU & Dropout & 0.2 \\
+LSTM/BiLSTM/GRU & Epochs & 100-150 \\
+LSTM/BiLSTM/GRU & Learning Rate & 0.001 \\
+\midrule
+Transformer & d\_model & 64 \\
+Transformer & Heads & 4 \\
+Transformer & Layers & 2 \\
+Transformer & FFN Dim & 256 \\
+\bottomrule
+\end{longtable}
+
+\chapter{Statistical Tests}
+\label{app:stats}
+
+\section{Normality Tests on Price Distribution}
+
+\begin{table}[H]
+\centering
+\caption{Statistical Tests on AAPL Price Distribution}
+\begin{tabular}{llr}
+\toprule
+\textbf{Test} & \textbf{Statistic} & \textbf{p-value} \\
+\midrule
+Shapiro-Wilk & 0.8234 & $< 0.0001$ \\
+Jarque-Bera & 1,245.67 & $< 0.0001$ \\
+Anderson-Darling & 45.89 & Critical: 1.09 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Conclusion}: All tests reject the null hypothesis of normality at $\alpha = 0.05$.
+
+\section{Stationarity Tests}
+
+\begin{table}[H]
+\centering
+\caption{Augmented Dickey-Fuller Test}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+ADF Statistic & 0.234 \\
+p-value & 0.975 \\
+Critical Value (1\%) & -3.432 \\
+Critical Value (5\%) & -2.862 \\
+Critical Value (10\%) & -2.567 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Conclusion}: Cannot reject unit root; series is non-stationary.
+
+\chapter{File Structure}
+\label{app:files}
+
+\begin{lstlisting}[caption=Project Directory Structure]
+text-analysis-for-financial-forecasting-Improved-Models/
+|-- Run_analysis.py              # Main analysis script
+|-- advanced_sentiment.py        # Sentiment computation
+|-- requirements.txt             # Python dependencies
+|-- README.md                    # Project documentation
+|
+|-- src/                         # Source modules
+|   |-- data_preprocessor.py     # Stock data fetching
+|   |-- huggingface_news_fetcher.py  # HuggingFace interface
+|   |-- sentiment_comparison.py  # Sentiment feature creation
+|   |-- rich_text_features.py    # LDA, adjectives, keywords
+|   |-- related_stocks_features.py  # Market context
+|   |-- tcn_model.py             # TCN implementation
+|   |-- statistical_visualizations.py  # Plotting functions
+|   |-- evaluation_metrics.py    # Metric computation
+|   +-- utils.py                 # Utilities (set_seed)
+|
+|-- data/                        # Data files
+|   |-- news_articles/           # News data
+|   |   |-- all_news_1999_2025.csv  # Historical news (685MB)
+|   |   +-- news_2020_2025.csv   # Recent news
+|   +-- historical_cache/        # Cached stock data
+|
+|-- results/                     # Output files
+|   +-- enhanced/
+|       |-- statistical/         # 8 diagnostic plots
+|       |   |-- 01_comprehensive_distribution.png
+|       |   |-- 02_time_series_diagnostics.png
+|       |   |-- 03_correlation_matrix.png
+|       |   |-- 04_sarimax_diagnostics.png
+|       |   |-- 05_tcn_diagnostics.png
+|       |   |-- 06_model_comparison.png
+|       |   |-- 07_linear_diagnostics.png
+|       |   +-- 08_transformer_failure_analysis.png
+|       |-- enhanced_dataset_with_all_features.csv
+|       +-- comprehensive_model_comparison.csv
+|
+|-- logs/                        # Execution logs
+|   +-- full_pipeline.log        # Complete run log
+|
++-- report/                      # This LaTeX report
+    |-- main.tex                 # Main document
+    |-- chapters/                # Chapter files
+    +-- figures/                 # Report figures
+\end{lstlisting}

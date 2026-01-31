@@ -1,0 +1,189 @@
+{
+  "date": "2021-11-29",
+  "event": {
+    "name": "Trading Day"
+  },
+  "headlines": [
+    {
+      "text": "3 REITs That Crushed Earnings",
+      "sentiment": -0.4215,
+      "words": [
+        {
+          "word": "reits",
+          "sentiment": 0.0
+        },
+        {
+          "word": "that",
+          "sentiment": 0.0
+        },
+        {
+          "word": "crushed",
+          "sentiment": -0.4215
+        },
+        {
+          "word": "earnings",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "3 Reasons Why Solana Could Just Be Getting Started",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "reasons",
+          "sentiment": 0.0
+        },
+        {
+          "word": "why",
+          "sentiment": 0.0
+        },
+        {
+          "word": "solana",
+          "sentiment": 0.0
+        },
+        {
+          "word": "could",
+          "sentiment": 0.0
+        },
+        {
+          "word": "just",
+          "sentiment": 0.0
+        },
+        {
+          "word": "getting",
+          "sentiment": 0.0
+        },
+        {
+          "word": "started",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Here's How Metaverse Shenanigans Pushed Meta Higher on Monday",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "here's",
+          "sentiment": 0.0
+        },
+        {
+          "word": "how",
+          "sentiment": 0.0
+        },
+        {
+          "word": "metaverse",
+          "sentiment": 0.0
+        },
+        {
+          "word": "shenanigans",
+          "sentiment": 0.0
+        },
+        {
+          "word": "pushed",
+          "sentiment": 0.0
+        },
+        {
+          "word": "meta",
+          "sentiment": 0.0
+        },
+        {
+          "word": "higher",
+          "sentiment": 0.0
+        },
+        {
+          "word": "monday",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "European shares rebound from Omicron-fuelled selloff",
+      "sentiment": 0.296,
+      "words": [
+        {
+          "word": "european",
+          "sentiment": 0.0
+        },
+        {
+          "word": "shares",
+          "sentiment": 0.296
+        },
+        {
+          "word": "rebound",
+          "sentiment": 0.0
+        },
+        {
+          "word": "from",
+          "sentiment": 0.0
+        },
+        {
+          "word": "omicron-fuelled",
+          "sentiment": 0.0
+        },
+        {
+          "word": "selloff",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "Italy's PD party pledges active government role over Telecom Italia, unions say",
+      "sentiment": 0.6597,
+      "words": [
+        {
+          "word": "italy's",
+          "sentiment": 0.0
+        },
+        {
+          "word": "party",
+          "sentiment": 0.4019
+        },
+        {
+          "word": "pledges",
+          "sentiment": 0.0
+        },
+        {
+          "word": "active",
+          "sentiment": 0.4019
+        },
+        {
+          "word": "government",
+          "sentiment": 0.0
+        },
+        {
+          "word": "role",
+          "sentiment": 0.0
+        },
+        {
+          "word": "over",
+          "sentiment": 0.0
+        },
+        {
+          "word": "telecom",
+          "sentiment": 0.0
+        },
+        {
+          "word": "italia,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "unions",
+          "sentiment": 0.0
+        },
+        {
+          "word": "say",
+          "sentiment": 0.0
+        }
+      ]
+    }
+  ],
+  "actual_price": 156.9476318359375,
+  "predicted_price": 153.23631754805365,
+  "prev_price": 153.58810424804688,
+  "actual_move_pct": 2.1873618431183592,
+  "predicted_move_pct": -0.22904553820462967,
+  "error_pct": 2.4164073813229887,
+  "model": "SARIMAX(1,1,1)"
+}

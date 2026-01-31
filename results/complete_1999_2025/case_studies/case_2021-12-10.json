@@ -1,0 +1,241 @@
+{
+  "date": "2021-12-10",
+  "event": {
+    "name": "Trading Day"
+  },
+  "headlines": [
+    {
+      "text": "What Type Of Shareholders Own The Most Number of Summit Financial Group, Inc. (NASDAQ:SMMF) Shares?",
+      "sentiment": 0.4201,
+      "words": [
+        {
+          "word": "what",
+          "sentiment": 0.0
+        },
+        {
+          "word": "type",
+          "sentiment": 0.0
+        },
+        {
+          "word": "shareholders",
+          "sentiment": 0.0
+        },
+        {
+          "word": "own",
+          "sentiment": 0.0
+        },
+        {
+          "word": "the",
+          "sentiment": 0.0
+        },
+        {
+          "word": "most",
+          "sentiment": 0.0
+        },
+        {
+          "word": "number",
+          "sentiment": 0.0772
+        },
+        {
+          "word": "summit",
+          "sentiment": 0.0
+        },
+        {
+          "word": "financial",
+          "sentiment": 0.0
+        },
+        {
+          "word": "group,",
+          "sentiment": 0.0
+        },
+        {
+          "word": "inc.",
+          "sentiment": 0.0
+        },
+        {
+          "word": "(nasdaq:smmf)",
+          "sentiment": 0.0
+        },
+        {
+          "word": "shares?",
+          "sentiment": 0.296
+        }
+      ]
+    },
+    {
+      "text": "Why Tootsie Roll Industries Stock Jumped as Much as 15.5% This Week",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "why",
+          "sentiment": 0.0
+        },
+        {
+          "word": "tootsie",
+          "sentiment": 0.0
+        },
+        {
+          "word": "roll",
+          "sentiment": 0.0
+        },
+        {
+          "word": "industries",
+          "sentiment": 0.0
+        },
+        {
+          "word": "stock",
+          "sentiment": 0.0
+        },
+        {
+          "word": "jumped",
+          "sentiment": 0.0
+        },
+        {
+          "word": "much",
+          "sentiment": 0.0
+        },
+        {
+          "word": "15.5%",
+          "sentiment": 0.0
+        },
+        {
+          "word": "this",
+          "sentiment": 0.0
+        },
+        {
+          "word": "week",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "What Didi\u2019s Delisting Means for Markets and Your Portfolio",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "what",
+          "sentiment": 0.0
+        },
+        {
+          "word": "didi\u2019s",
+          "sentiment": 0.0
+        },
+        {
+          "word": "delisting",
+          "sentiment": 0.0
+        },
+        {
+          "word": "means",
+          "sentiment": 0.0
+        },
+        {
+          "word": "for",
+          "sentiment": 0.0
+        },
+        {
+          "word": "markets",
+          "sentiment": 0.0
+        },
+        {
+          "word": "and",
+          "sentiment": 0.0
+        },
+        {
+          "word": "your",
+          "sentiment": 0.0
+        },
+        {
+          "word": "portfolio",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "What Investors Need to Know About New FHFA Conforming Loan Limits",
+      "sentiment": 0.0,
+      "words": [
+        {
+          "word": "what",
+          "sentiment": 0.0
+        },
+        {
+          "word": "investors",
+          "sentiment": 0.0
+        },
+        {
+          "word": "need",
+          "sentiment": 0.0
+        },
+        {
+          "word": "know",
+          "sentiment": 0.0
+        },
+        {
+          "word": "about",
+          "sentiment": 0.0
+        },
+        {
+          "word": "new",
+          "sentiment": 0.0
+        },
+        {
+          "word": "fhfa",
+          "sentiment": 0.0
+        },
+        {
+          "word": "conforming",
+          "sentiment": 0.0
+        },
+        {
+          "word": "loan",
+          "sentiment": 0.0
+        },
+        {
+          "word": "limits",
+          "sentiment": 0.0
+        }
+      ]
+    },
+    {
+      "text": "VTV's Underlying Holdings Imply 10% Gain Potential",
+      "sentiment": 0.5267,
+      "words": [
+        {
+          "word": "vtv's",
+          "sentiment": 0.0
+        },
+        {
+          "word": "underlying",
+          "sentiment": 0.0
+        },
+        {
+          "word": "holdings",
+          "sentiment": 0.0
+        },
+        {
+          "word": "imply",
+          "sentiment": 0.0
+        },
+        {
+          "word": "10%",
+          "sentiment": 0.0
+        },
+        {
+          "word": "gain",
+          "sentiment": 0.5267
+        },
+        {
+          "word": "potential",
+          "sentiment": 0.0
+        }
+      ]
+    }
+  ],
+  "actual_price": 175.76290893554688,
+  "predicted_price": 172.01359291864011,
+  "prev_price": 170.973388671875,
+  "actual_move_pct": 2.8013249903256714,
+  "predicted_move_pct": 0.6084012575556017,
+  "error_pct": 2.19292373277007,
+  "model": "SARIMAX(1,1,1)"
+}
